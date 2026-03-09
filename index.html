@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas del equipo · Anceu Coliving 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f5;
+      --card: #fff;
+      --text: #2d2a26;
+      --text-muted: #6b6560;
+      --bari: #2563eb;
+      --bari-soft: #eff6ff;
+      --se: #059669;
+      --se-soft: #ecfdf5;
+      --carmen: #ea580c;
+      --carmen-soft: #fff7ed;
+      --rosabel: #6d28d9;
+      --rosabel-soft: #f5f3ff;
+      --border: #e8e4df;
+      --radius: 12px;
+      --shadow: 0 2px 12px rgba(0,0,0,.06);
+      --shadow-hover: 0 8px 24px rgba(0,0,0,.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      margin: 0;
+      padding: 2rem 1rem 4rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .summary-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .summary-card h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .summary-card .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .summary-card.bari .dot { background: var(--bari); }
+    .summary-card.se .dot { background: var(--se); }
+    .summary-card.carmen .dot { background: var(--carmen); }
+    .summary-card.rosabel .dot { background: var(--rosabel); }
+
+    .summary-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .summary-stats span {
+      color: var(--text-muted);
+    }
+
+    .summary-stats strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .person-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .person-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .person-header .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #fff;
+    }
+
+    .person-section.bari .avatar { background: var(--bari); }
+    .person-section.se .avatar { background: var(--se); }
+    .person-section.carmen .avatar { background: var(--carmen); }
+    .person-section.rosabel .avatar { background: var(--rosabel); }
+
+    .person-header h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    .freq-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 1.5rem 0 0.75rem;
+    }
+
+    .task-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .task-item {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.5rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1rem;
+      align-items: start;
+    }
+
+    .task-item:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .task-name {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .task-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      grid-column: 1;
+    }
+
+    .task-when {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      grid-column: 1;
+    }
+
+    .task-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+      grid-row: 1 / -1;
+      align-self: center;
+    }
+
+    .person-section.bari .task-time { color: var(--bari); }
+    .person-section.se .task-time { color: var(--se); }
+    .person-section.carmen .task-time { color: var(--carmen); }
+    .person-section.rosabel .task-time { color: var(--rosabel); }
+
+    .block-total {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .block-total strong {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+    }
+
+    .note {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .task-item {
+        grid-template-columns: 1fr;
+      }
+      .task-time {
+        grid-row: auto;
+        align-self: start;
+      }
+    }
+
+    /* Vista inicial: solo nombres */
+    #view-home {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .person-card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      box-shadow: var(--shadow);
+      border: 2px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      min-width: 280px;
+    }
+
+    .person-card-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--text-muted);
+    }
+
+    .person-card-link.bari:hover { border-color: var(--bari); }
+    .person-card-link.se:hover { border-color: var(--se); }
+    .person-card-link.carmen:hover { border-color: var(--carmen); }
+    .person-card-link.rosabel:hover { border-color: var(--rosabel); }
+
+    .person-card-link .card-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .person-card-link.bari .card-avatar { background: var(--bari); }
+    .person-card-link.se .card-avatar { background: var(--se); }
+    .person-card-link.carmen .card-avatar { background: var(--carmen); }
+    .person-card-link.rosabel .card-avatar { background: var(--rosabel); }
+
+    .person-card-link .card-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+
+    .person-card-link .card-summary {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .home-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    /* Ocultar/mostrar vistas */
+    .person-section {
+      display: none;
+    }
+
+    body.view-bari #view-home,
+    body.view-se #view-home,
+    body.view-carmen #view-home,
+    body.view-rosabel #view-home {
+      display: none;
+    }
+
+    body.view-bari #person-bari,
+    body.view-se #person-se,
+    body.view-carmen #person-carmen,
+    body.view-rosabel #person-rosabel {
+      display: block;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .back-link:hover {
+      color: var(--text);
+    }
+
+    /* Buscador en pantalla inicial */
+    .search-wrap {
+      width: 100%;
+      max-width: 400px;
+      margin: 1.5rem 0 0;
+    }
+
+    .search-input {
+      width: 100%;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.75rem 1rem 0.75rem 2.75rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='%236b6560' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E") no-repeat 0.75rem center;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--se);
+    }
+
+    #search-results {
+      margin-top: 1rem;
+      width: 100%;
+      max-width: 400px;
+      max-height: 280px;
+      overflow-y: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+    }
+
+    #search-results:empty {
+      display: none;
+    }
+
+    .search-result-item {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+
+    .search-result-item:hover {
+      background: var(--bg);
+    }
+
+    .search-result-person {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .search-result-person.bari { color: var(--bari); }
+    .search-result-person.se { color: var(--se); }
+    .search-result-person.carmen { color: var(--carmen); }
+    .search-result-person.rosabel { color: var(--rosabel); }
+
+    .search-result-task {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .search-result-snippet {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+    }
+
+    .search-no-results {
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Pantalla inicial: elegir persona -->
+    <div id="view-home">
+      <header>
+        <h1>Anceu Coliving</h1>
+        <p class="subtitle">Tareas y responsabilidades del equipo · 2026</p>
+      </header>
+      <p style="color: var(--text-muted); text-align: center; margin: 0;">
+        Elige una persona para ver sus tareas
+      </p>
+      <div class="search-wrap">
+        <input type="search" id="task-search" class="search-input" placeholder="Buscar tarea (ej: basura, froiz, piscina…)" autocomplete="off" aria-label="Buscar tarea">
+        <div id="search-results" role="list"></div>
+      </div>
+      <nav class="home-cards" aria-label="Elegir miembro del equipo">
+        <a href="#bari" class="person-card-link bari" data-person="bari">
+          <div class="card-avatar">B</div>
+          <div class="card-name">Bari</div>
+          <div class="card-summary">22 tareas semanales · 14h 30min total</div>
+        </a>
+        <a href="#se" class="person-card-link se" data-person="se">
+          <div class="card-avatar">S</div>
+          <div class="card-name">Se</div>
+          <div class="card-summary">Semanal 12h 30min · Quincenal 1h 30min · Mensual 1h</div>
+        </a>
+        <a href="#carmen" class="person-card-link carmen" data-person="carmen">
+          <div class="card-avatar">C</div>
+          <div class="card-name">Carmen</div>
+          <div class="card-summary">Semanal 5h 5min · Quincenal 30min · Mensual 2h 10min</div>
+        </a>
+        <a href="#rosabel" class="person-card-link rosabel" data-person="rosabel">
+          <div class="card-avatar">R</div>
+          <div class="card-name">Rosabel</div>
+          <div class="card-summary">Limpieza y suministros · 25h/semana</div>
+        </a>
+      </nav>
+    </div>
+
+    <!-- BARI -->
+    <section id="person-bari" class="person-section bari">
+      <a href="#" class="back-link" aria-label="Volver al inicio">← Volver al inicio</a>
+      <div class="person-header">
+        <div class="avatar">B</div>
+        <h2>Bari</h2>
+      </div>
+
+      <p class="freq-badge">📅 Tareas semanales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Lista compra coliving</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Café, leche, papel horno, etc.</span>
+          <span class="task-when">Viernes antes de las 12:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Tareas de cocina de mañana (fin de semana)</span>
+          <span class="task-time">60 min</span>
+          <span class="task-desc">Basura, lavavajillas, tazas, free food, puertas neveras colivers</span>
+          <span class="task-when">Sábado y domingo antes de las 10:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Poner lavavajillas después de comer (entre semana)</span>
+          <span class="task-time">10 min</span>
+          <span class="task-when">Lunes a viernes a las 16:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Poner lavavajillas después de comer (fin de semana)</span>
+          <span class="task-time">10 min</span>
+          <span class="task-when">Sábado y domingo a las 16:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Mandar por Slack planes coliving de la semana</span>
+          <span class="task-time">20 min</span>
+          <span class="task-when">Lunes antes de la house meeting</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Escribir en pizarra planes coliving de la semana</span>
+          <span class="task-time">30 min</span>
+          <span class="task-when">Hasta martes antes de las 20:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestionar / organizar talleres en el coliving</span>
+          <span class="task-time">60 min</span>
+          <span class="task-desc">Ayuda operativa a colivers que organizan talleres. Una vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Ser persona de referencia para colivers</span>
+          <span class="task-time">60 min</span>
+          <span class="task-desc">Resolver dudas de colivers. Una vez a la semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Onboarding</span>
+          <span class="task-time">60 min</span>
+          <span class="task-desc">Dos veces por semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Posts Instagram</span>
+          <span class="task-time">120 min</span>
+          <span class="task-desc">1 post/semana · 5 stories/semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Anceu Inn (gestión fotos)</span>
+          <span class="task-time">10 min</span>
+          <span class="task-desc">Poner/quitar fotos cuando llegan/se van colivers. Dos veces por semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Recogida de paquetes</span>
+          <span class="task-time">10 min</span>
+          <span class="task-desc">Todos los días, una vez (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Crear grupos de cenas</span>
+          <span class="task-time">20 min</span>
+          <span class="task-desc">Crear los grupos de cenas para la semana. Una vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Recoger groceries de Froiz</span>
+          <span class="task-time">60 min</span>
+          <span class="task-when">Miércoles a las 14:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Recoger groceries de Frutas Nieves</span>
+          <span class="task-time">60 min</span>
+          <span class="task-when">Miércoles a las 12:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Vaciar deshumidificador laundry (tarde)</span>
+          <span class="task-time">5 min</span>
+          <span class="task-when">Lunes a viernes a las 16:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Vaciar deshumidificador laundry (noche)</span>
+          <span class="task-time">5 min</span>
+          <span class="task-when">Lunes a viernes a las 22:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Check espacios exteriores (entre semana)</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Cenador, patio, piscina, bosque → lost &amp; found. Lunes a viernes antes de las 10:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Check espacios exteriores (fin de semana)</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Cenador, patio, piscina, bosque → lost &amp; found. Sábado y domingo antes de las 10:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">House meeting</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Family meeting semanal. Lunes a las 21:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Actividades de community building</span>
+          <span class="task-time">90 min</span>
+          <span class="task-desc">Martes o jueves 1h + actividad fin de semana 2h máx. Dos veces por semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Reunión semanal con el equipo</span>
+          <span class="task-time">60 min</span>
+          <span class="task-desc">Reu con Agus y Afri para planear la semana. Lunes a las 17:00</span>
+        </li>
+      </ul>
+      <p class="block-total">Total semanal (suma por ocurrencia): <strong>14h 30min</strong></p>
+    </section>
+
+    <!-- SE -->
+    <section id="person-se" class="person-section se">
+      <a href="#" class="back-link" aria-label="Volver al inicio">← Volver al inicio</a>
+      <div class="person-header">
+        <div class="avatar">S</div>
+        <h2>Se</h2>
+      </div>
+
+      <p class="freq-badge">📅 Tareas semanales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Tareas de cocina de mañana (entre semana)</span>
+          <span class="task-time">60 min × 5 = 5h/sem</span>
+          <span class="task-desc">Basura, lavavajillas, cacharros, tazas, escurridores, revisar nevera. Lunes a viernes antes de las 10:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Revisar comida podrida en nevera</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Tirar comida abierta mucho tiempo o que huela mal (free food + nevera colivers). 1 vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Offboarding de coliver</span>
+          <span class="task-time">20 min × 2 = 40 min/sem</span>
+          <span class="task-desc">Quitar comida nevera/despensa, limpiar balda, echar servilleta a lavar. Dos veces por semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestión de jardinería</span>
+          <span class="task-time">180 min</span>
+          <span class="task-desc">Una vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestión de piscina</span>
+          <span class="task-time">2h/sem</span>
+          <span class="task-desc">Una vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestión de ovejas</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Una vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestión del pan</span>
+          <span class="task-time">10 min × 5 = 50 min/sem</span>
+          <span class="task-desc">Sacar pan del congelador, ver lo que falta, hacer pedido. Lunes a viernes antes de las 10:00</span>
+        </li>
+      </ul>
+      <p class="block-total">Total semanal (según frecuencia real): <strong>12h 30min</strong></p>
+
+      <p class="freq-badge">🗓️ Tareas quincenales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Limpiar el lavavajillas</span>
+          <span class="task-time">30 min</span>
+          <span class="task-when">Quincenal</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Limpiar el patio</span>
+          <span class="task-time">60 min</span>
+          <span class="task-when">Quincenal</span>
+        </li>
+      </ul>
+      <p class="block-total">Total quincenal: <strong>1h 30min</strong></p>
+
+      <p class="freq-badge">📆 Tareas mensuales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Revisar y limpiar congelador</span>
+          <span class="task-time">60 min</span>
+          <span class="task-when">1 vez al mes</span>
+        </li>
+      </ul>
+      <p class="block-total">Total mensual: <strong>1h</strong></p>
+
+      <p class="freq-badge">⚡ Tareas según situación</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Recoger hamacas y cojines (cuando llueve)</span>
+          <span class="task-time">20 min</span>
+          <span class="task-when">Cuando vaya a llover</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Poner hamacas y cojines (cuando no llueve)</span>
+          <span class="task-time">20 min</span>
+          <span class="task-when">Cuando no vaya a llover</span>
+        </li>
+      </ul>
+      <p class="block-total">Total por ocurrencia: <strong>40min</strong></p>
+    </section>
+
+    <!-- CARMEN -->
+    <section id="person-carmen" class="person-section carmen">
+      <a href="#" class="back-link" aria-label="Volver al inicio">← Volver al inicio</a>
+      <div class="person-header">
+        <div class="avatar">C</div>
+        <h2>Carmen</h2>
+      </div>
+
+      <p class="freq-badge">📅 Tareas semanales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Escribir grupos de cenas en Excel</span>
+          <span class="task-time">10 min</span>
+          <span class="task-when">Una vez a la semana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Comunicación entradas/salidas de colivers</span>
+          <span class="task-time">20 min</span>
+          <span class="task-when">Cada viernes de mañana</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Hacer el pedido de Froiz</span>
+          <span class="task-time">60 min</span>
+          <span class="task-when">Martes de noche</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Guardia Civil colivers</span>
+          <span class="task-time">10 min</span>
+          <span class="task-desc">Dos veces por semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Meter en Splitwise y Slack a colivers</span>
+          <span class="task-time">10 min</span>
+          <span class="task-desc">Antes de la llegada de cada coliver. Dos veces por semana (de media)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestión de limpieza de habitaciones con Rosabel</span>
+          <span class="task-time">15 min</span>
+          <span class="task-desc">Ver quién entra/sale y dejar cuadrante listo. Viernes antes de las 12:00</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Gestión de horas de llegadas de colivers</span>
+          <span class="task-time">—</span>
+          <span class="task-desc">Verificar 3 días antes y enviar WhatsApp/Slack si no han confirmado hora. Semanal (según llegadas)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Facturación de coworkers y gestión de facturas</span>
+          <span class="task-time">1h/sem</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Devolución de paquetes y hacer pedidos</span>
+          <span class="task-time">2h/sem</span>
+        </li>
+      </ul>
+      <p class="block-total">Total semanal: <strong>5h 5min</strong></p>
+
+      <p class="freq-badge">🗓️ Tareas quincenales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Gestión de Splitwise</span>
+          <span class="task-time">30 min</span>
+          <span class="task-desc">Aclarar pagos al irse colivers, gastos bebidas y lavandería con Rosabel. Quincenal</span>
+        </li>
+      </ul>
+      <p class="block-total">Total quincenal: <strong>30min</strong></p>
+
+      <p class="freq-badge">📆 Tareas mensuales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Programación aerotermia</span>
+          <span class="task-time">10 min</span>
+          <span class="task-desc">Día antes de llegada: encender. Día de salida: apagar. Zonas comunes: programar 1 vez al año, apagar en verano. Mensual</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Hacer cartelería</span>
+          <span class="task-time">2h/mes</span>
+        </li>
+      </ul>
+      <p class="block-total">Total mensual: <strong>2h 10min</strong></p>
+    </section>
+
+    <!-- ROSABEL -->
+    <section id="person-rosabel" class="person-section rosabel">
+      <a href="#" class="back-link" aria-label="Volver al inicio">← Volver al inicio</a>
+      <div class="person-header">
+        <div class="avatar">R</div>
+        <h2>Rosabel</h2>
+      </div>
+
+      <p class="freq-badge">📅 Tareas semanales</p>
+      <ul class="task-list">
+        <li class="task-item">
+          <span class="task-name">Limpieza de habitaciones</span>
+          <span class="task-time">8h/sem</span>
+          <span class="task-desc">Limpieza a fondo en entradas y salidas de colivers</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Limpieza de zonas comunes</span>
+          <span class="task-time">6h/sem</span>
+          <span class="task-desc">Salón, pasillos, zonas de paso</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Cocina y neveras</span>
+          <span class="task-time">4h/sem</span>
+          <span class="task-desc">Limpieza de cocina y neveras (revisión neveras 1 vez por semana)</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Coworkings</span>
+          <span class="task-time">3h/sem</span>
+          <span class="task-desc">Limpieza de espacios de coworking</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Chill house y baños</span>
+          <span class="task-time">3h/sem</span>
+          <span class="task-desc">Limpieza de chill house y baños comunes</span>
+        </li>
+        <li class="task-item">
+          <span class="task-name">Pedido semanal de suministros de limpieza y habitaciones</span>
+          <span class="task-time">1h/sem</span>
+        </li>
+      </ul>
+      <p class="block-total">Total semanal: <strong>25h</strong></p>
+    </section>
+
+    <div class="note">
+      <strong>Nota:</strong> Los tiempos "semanal" son la suma de cada tarea por una ocurrencia; la carga real depende de las veces que se repita esa tarea en la semana. Las tareas con "—" no tienen estimación asignada aún.
+    </div>
+
+    <footer>
+      Anceu Coliving · Rural Hackers · Anceu, Ponte Caldelas, Galicia · Documento interno del equipo · 2026
+    </footer>
+  </div>
+
+  <script>
+    function applyView() {
+      var hash = (location.hash || '').replace(/^#/, '');
+      document.body.removeAttribute('class');
+      if (hash === 'bari' || hash === 'se' || hash === 'carmen' || hash === 'rosabel') {
+        document.body.classList.add('view-' + hash);
+      }
+    }
+    window.addEventListener('hashchange', applyView);
+    applyView();
+
+    // Índice de búsqueda: recorre todas las tareas del DOM
+    var taskIndex = [];
+    var personNames = { bari: 'Bari', se: 'Se', carmen: 'Carmen', rosabel: 'Rosabel' };
+    document.querySelectorAll('.person-section').forEach(function(section) {
+      var sectionId = section.id;
+      if (!sectionId || sectionId.indexOf('person-') !== 0) return;
+      var personId = sectionId.replace('person-', '');
+      var personName = personNames[personId] || personId;
+      section.querySelectorAll('.task-item').forEach(function(item) {
+        var nameEl = item.querySelector('.task-name');
+        var descEl = item.querySelector('.task-desc');
+        var whenEl = item.querySelector('.task-when');
+        var name = nameEl ? nameEl.textContent.trim() : '';
+        var desc = descEl ? descEl.textContent.trim() : '';
+        var when = whenEl ? whenEl.textContent.trim() : '';
+        var searchText = (name + ' ' + desc + ' ' + when).toLowerCase();
+        taskIndex.push({
+          personId: personId,
+          personName: personName,
+          taskName: name,
+          snippet: desc || when,
+          searchText: searchText
+        });
+      });
+    });
+
+    var searchInput = document.getElementById('task-search');
+    var searchResults = document.getElementById('search-results');
+
+    function normalize(s) {
+      return s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+    }
+
+    searchInput.addEventListener('input', function() {
+      var q = normalize(this.value.trim());
+      searchResults.innerHTML = '';
+      if (q.length < 2) return;
+
+      var matches = taskIndex.filter(function(t) {
+        return t.searchText && normalize(t.searchText).indexOf(q) !== -1;
+      });
+
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<div class="search-no-results">Ninguna tarea encontrada</div>';
+        return;
+      }
+
+      matches.slice(0, 20).forEach(function(t) {
+        var a = document.createElement('a');
+        a.href = '#' + t.personId;
+        a.className = 'search-result-item';
+        a.setAttribute('role', 'listitem');
+        a.innerHTML =
+          '<span class="search-result-person ' + t.personId + '">' + t.personName + '</span>' +
+          '<div class="search-result-task">' + escapeHtml(t.taskName) + '</div>' +
+          (t.snippet ? '<div class="search-result-snippet">' + escapeHtml(t.snippet) + '</div>' : '');
+        searchResults.appendChild(a);
+      });
+    });
+
+    searchInput.addEventListener('focus', function() {
+      if (this.value.trim().length >= 2) searchInput.dispatchEvent(new Event('input'));
+    });
+
+    function escapeHtml(s) {
+      if (!s) return '';
+      var div = document.createElement('div');
+      div.textContent = s;
+      return div.innerHTML;
+    }
+  </script>
+</body>
+</html>

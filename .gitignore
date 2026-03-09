@@ -1,0 +1,6 @@
+# Extracción temporal del docx
+docx_extract/
+
+# OS
+.DS_Store
+Thumbs.db
