@@ -1,0 +1,13 @@
+---
+import type { Task } from '../data/types';
+interface Props {
+  task: Task;
+}
+const { task } = Astro.props;
+---
+<li class="task-item">
+  <span class="task-name">{task.name}</span>
+  <span class="task-time">{task.time}</span>
+  {task.desc && <span class="task-desc">{task.desc}</span>}
+  {task.when && <span class="task-when">{task.when}</span>}
+</li>

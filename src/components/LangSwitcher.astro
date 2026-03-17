@@ -1,0 +1,16 @@
+---
+interface Props {
+  lang: 'es' | 'en' | 'gl';
+  slug: string;  // "" for home, "bari" etc. for person pages
+}
+const { lang, slug } = Astro.props;
+const url = (l: string) => {
+  if (l === 'es') return slug ? `/${slug}` : '/';
+  return slug ? `/${l}/${slug}` : `/${l}/`;
+};
+---
+<nav class="lang-switcher" aria-label="Language">
+  <a href={url('es')} class={`lang-btn${lang === 'es' ? ' active' : ''}`}>ES</a>
+  <a href={url('en')} class={`lang-btn${lang === 'en' ? ' active' : ''}`}>EN</a>
+  <a href={url('gl')} class={`lang-btn${lang === 'gl' ? ' active' : ''}`}>GL</a>
+</nav>

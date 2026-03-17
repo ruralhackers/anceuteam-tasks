@@ -1,0 +1,13 @@
+---
+import type { Person } from '../data/types';
+interface Props {
+  person: Person;
+  href: string;
+}
+const { person, href } = Astro.props;
+---
+<a href={href} class={`person-card-link ${person.color}`}>
+  <div class={`card-avatar ${person.color}`}>{person.initial}</div>
+  <div class="card-name">{person.name}</div>
+  <div class="card-summary">{person.summary}</div>
+</a>

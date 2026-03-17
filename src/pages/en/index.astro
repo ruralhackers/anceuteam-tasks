@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitcher from '../../components/LangSwitcher.astro';
+import PersonCard from '../../components/PersonCard.astro';
+import { ui, people } from '../../data/en';
+
+const searchData = people.flatMap(p =>
+  (['weekly', 'biweekly', 'monthly', 'situational'] as const).flatMap(freq =>
+    p.tasks[freq].items.map(t => ({
+      personId: p.id,
+      personName: p.name,
+      taskName: t.name,
+      snippet: t.desc || t.when || '',
+      searchText: `${t.name} ${t.desc ?? ''} ${t.when ?? ''}`,
+    }))
+  )
+);
+const langPrefix = '/en';
+const noResults = ui.searchNoResults;
+---
+<Layout title={ui.siteTitle} lang="en" slug="">
+  <LangSwitcher lang="en" slug="" />
+  <header>
+    <h1>{ui.siteTitle}</h1>
+    <p class="subtitle">{ui.subtitle}</p>
+  </header>
+  <div class="home-wrap">
+    <p style="color: var(--text-muted); text-align: center; margin: 0;">{ui.choosePersonLabel}</p>
+    <div class="search-wrap">
+      <input type="search" id="task-search" class="search-input"
+        placeholder={ui.searchPlaceholder} autocomplete="off" aria-label={ui.searchAriaLabel}>
+      <div id="search-results" role="list"></div>
+    </div>
+    <nav class="home-cards" aria-label={ui.teamNavLabel}>
+      {people.map(p => <PersonCard person={p} href={`/en/${p.id}`} />)}
+    </nav>
+  </div>
+  <footer>{ui.footerText}</footer>
+  <script is:inline define:vars={{ searchData, langPrefix, noResults }}>
+    var searchInput = document.getElementById('task-search');
+    var searchResults = document.getElementById('search-results');
+    function normalize(s) {
+      return s.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+    }
+    searchInput.addEventListener('input', function () {
+      var q = normalize(this.value.trim());
+      searchResults.innerHTML = '';
+      if (q.length < 2) return;
+      var matches = searchData.filter(function (t) {
+        return normalize(t.searchText).indexOf(q) !== -1;
+      });
+      if (matches.length === 0) {
+        searchResults.innerHTML = '<div class="search-no-results">' + noResults + '</div>';
+        return;
+      }
+      matches.slice(0, 20).forEach(function (t) {
+        var a = document.createElement('a');
+        a.href = langPrefix + '/' + t.personId;
+        a.className = 'search-result-item';
+        a.setAttribute('role', 'listitem');
+        var taskDiv = document.createElement('div');
+        taskDiv.textContent = t.taskName;
+        var snipDiv = document.createElement('div');
+        snipDiv.textContent = t.snippet;
+        a.innerHTML =
+          '<span class="search-result-person ' + t.personId + '">' + t.personName + '</span>' +
+          '<div class="search-result-task">' + taskDiv.innerHTML + '</div>' +
+          (t.snippet ? '<div class="search-result-snippet">' + snipDiv.innerHTML + '</div>' : '');
+        searchResults.appendChild(a);
+      });
+    });
+  </script>
+</Layout>

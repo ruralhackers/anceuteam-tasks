@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LangSwitcher from '../components/LangSwitcher.astro';
+import TaskItem from '../components/TaskItem.astro';
+import { ui, people } from '../data/es';
+
+export function getStaticPaths() {
+  return [
+    { params: { person: 'bari' } },
+    { params: { person: 'se' } },
+    { params: { person: 'carmen' } },
+    { params: { person: 'rosabel' } },
+  ];
+}
+
+const { person: personId } = Astro.params;
+const person = people.find(p => p.id === personId)!;
+const title = ui.pageTitlePersonTemplate.replace('{name}', person.name);
+const buckets = [
+  { key: 'weekly' as const, label: ui.weekly },
+  { key: 'biweekly' as const, label: ui.biweekly },
+  { key: 'monthly' as const, label: ui.monthly },
+  { key: 'situational' as const, label: ui.situational },
+];
+---
+<Layout title={title} lang="es" slug={personId}>
+  <LangSwitcher lang="es" slug={personId} />
+  <a href="/" class="back-link">{ui.backLabel}</a>
+  <div class="person-header">
+    <div class={`avatar ${person.color}`}>{person.initial}</div>
+    <h2>{person.name}</h2>
+  </div>
+  <div class={`color-${person.color}`}>
+    {buckets.map(({ key, label }) => {
+      const group = person.tasks[key];
+      if (group.items.length === 0) return null;
+      return (
+        <>
+          <p class="freq-badge">{label}</p>
+          <ul class="task-list">
+            {group.items.map(task => <TaskItem task={task} />)}
+          </ul>
+          {group.total && <p class="block-total">{group.total}</p>}
+        </>
+      );
+    })}
+  </div>
+  <div class="note"><strong>{ui.noteLabel}:</strong> {ui.noteText}</div>
+  <footer>{ui.footerText}</footer>
+</Layout>
