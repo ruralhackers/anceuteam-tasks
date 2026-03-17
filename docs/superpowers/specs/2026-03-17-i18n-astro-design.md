@@ -168,8 +168,20 @@ anceuteam-tasks/
 
 ---
 
+## Search
+
+Client-side task search on the home page, ported from the current `index.html`.
+
+- A search input searches across all tasks for the current language (task name, desc, when fields)
+- Results show: person name (colour-coded), task name, snippet
+- Clicking a result navigates to that person's page
+- Implemented as a `<script>` island in the home page — no framework, plain JS, same approach as the original
+- Search data is the already-rendered `people` array from the current language's data file (no extra fetch)
+- `ui` object includes translated strings: search placeholder, "no results" message
+
+---
+
 ## Out of Scope
 
-- No search functionality in initial Astro port (can be added later)
 - No CMS integration
 - No server-side rendering
