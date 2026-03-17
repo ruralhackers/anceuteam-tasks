@@ -27,7 +27,7 @@ src/data/
 Each data file exports two objects:
 
 ### `ui` — Interface strings
-All UI text: site title, subtitle, search placeholder, back link label, frequency section headings (weekly / biweekly / monthly), total time labels, footer text.
+All UI text: site title, subtitle, back link label, frequency section headings (weekly / biweekly / monthly / situational), footer text. Also includes a `pageTitlePerson` template string used for person page `<title>` tags (e.g. `"Bari · Anceu Coliving"`).
 
 ### `people` — Task data
 Array of person objects with shape:
@@ -42,22 +42,27 @@ interface Person {
     weekly: Task[]
     biweekly: Task[]
     monthly: Task[]
+    situational: Task[]   // tasks triggered by conditions (e.g. rain forecast)
   }
 }
 
 interface Task {
   name: string
-  time: string         // e.g. "30 min"
+  time: string    // display string as-is from source, e.g. "30 min", "60 min × 5 = 5h/sem", "—"
   desc?: string
   when?: string
 }
 ```
+
+**Time field:** `time` is a display-only string — not parsed or computed. Strings are kept as-is from the source data. Section totals (e.g. "Total semanal: 12h 30min") are also plain strings stored directly in the data, not computed at runtime.
 
 Types are defined once in `types.ts` and imported by all three data files.
 
 ---
 
 ## Routing
+
+Astro's built-in `i18n` config is **not used** — routing is handled manually via the directory structure below. This avoids conflicts with the non-standard default-language-at-root setup and keeps the implementation straightforward.
 
 Six thin page files. ES at root, EN under `/en/`, GL under `/gl/`:
 
@@ -90,13 +95,23 @@ src/layouts/
 ```
 
 ### LangSwitcher
-Receives `lang` (current language) and `path` (current page slug, e.g. `"bari"`). Generates correct URL for each language:
-- ES: `/${path}` (or `/` for home)
-- EN: `/en/${path}` (or `/en/` for home)
-- GL: `/gl/${path}` (or `/gl/` for home)
+Receives `lang` (current language) and `slug` (current page slug, e.g. `"bari"`, or `""` for home). Generates correct URL for each language:
+- ES: `slug ? `/${slug}` : "/"`
+- EN: `slug ? `/en/${slug}` : "/en/"`
+- GL: `slug ? `/gl/${slug}` : "/gl/"`
+
+Home pages pass `slug=""` to avoid `/en/undefined`.
 
 ### Layout
 Ports the existing CSS from `index.html`: CSS custom properties for colors, Outfit + JetBrains Mono fonts via Google Fonts, responsive breakpoints. Accepts `title` and `lang` props.
+
+Sets `<html lang="es|en|gl">` from the `lang` prop.
+
+Emits `<link rel="alternate" hreflang="...">` tags for each language variant of the current page (SEO).
+
+**Page titles:**
+- Home: `ui.siteTitle` (e.g. "Anceu Coliving · Tareas del equipo")
+- Person page: person name + site name (e.g. "Bari · Anceu Coliving"), composed in the page file and passed as `title` prop
 
 ---
 
@@ -111,9 +126,10 @@ Ports the existing CSS from `index.html`: CSS custom properties for colors, Outf
 
 ## Deployment
 
-- `astro.config.mjs`: `output: 'static'`, `site` set to production URL
-- `netlify.toml`: standard static build config (`npm run build`, publish `dist/`)
+- `astro.config.mjs`: `output: 'static'`, `site` set to production URL (to be filled in, required for correct `hreflang` URLs)
+- `netlify.toml`: `[build]` section with `command = "npm run build"` and `publish = "dist"`; the legacy `index.html` at repo root is not in `dist/` and is not served
 - No SSR adapter needed — purely static output
+- Legacy `index.html` stays at repo root for reference only; Netlify serves from `dist/` so it is never reachable
 
 ---
 
@@ -147,7 +163,7 @@ anceuteam-tasks/
 │           ├── index.astro
 │           └── [person].astro
 ├── public/
-└── index.html   (legacy — kept for reference, not served)
+└── index.html   (legacy — kept for reference, not served by Netlify)
 ```
 
 ---
