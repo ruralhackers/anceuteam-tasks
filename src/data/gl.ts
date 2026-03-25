@@ -179,6 +179,9 @@ export const preseason: ChecklistPage = {
         { task: 'Preparar fotos e follas para o Anceu Inn' },
         { task: 'Publicar post en Instagram anunciando a reapertura' },
         { task: 'Revisar lista de subministros de apertura', href: '/gl/subministros' },
+        { task: 'Revisar armarios de comida dos colivers', note: 'Que estean limpos' },
+        { task: 'Revisar baldas de neveiras dos colivers', note: 'Que estean limpas' },
+        { task: 'Comprobar stickers de número de habitación', note: 'Baldas de neveira e armarios de comida' },
       ],
     },
     {
@@ -191,6 +194,8 @@ export const preseason: ChecklistPage = {
         { task: 'Facer o primeiro pedido de Carrefour para a apertura' },
         { task: 'Planificar grupos de ceas da primeira semana' },
         { task: 'Programar a primeira house meeting' },
+        { task: 'Crear o álbum de fotos da tempada' },
+        { task: 'Xestionar hora de chegada de colivers e avisar a Bari' },
       ],
     },
     {
