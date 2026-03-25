@@ -34,6 +34,10 @@ const noResults = ui.searchNoResults;
     <nav class="home-cards" aria-label={ui.teamNavLabel}>
       {people.map(p => <PersonCard person={p} href={`/${p.id}`} />)}
     </nav>
+    <div class="extra-links">
+      <a href="/apertura" class="extra-link">{ui.preseasonNav}</a>
+      <a href="/suministros" class="extra-link">{ui.suppliesNav}</a>
+    </div>
   </div>
   <footer>{ui.footerText}</footer>
   <script is:inline define:vars={{ searchData, langPrefix, noResults }}>

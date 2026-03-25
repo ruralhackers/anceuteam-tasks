@@ -1,10 +1,10 @@
-import type { UI, Person } from './types';
+import type { UI, Person, ChecklistPage } from './types';
 
 export const ui: UI = {
   siteTitle: 'Anceu Coliving',
   subtitle: 'Tareas y responsabilidades del equipo · 2026',
   choosePersonLabel: 'Elige una persona para ver sus tareas',
-  searchPlaceholder: 'Buscar tarea (ej: basura, froiz, piscina…)',
+  searchPlaceholder: 'Buscar tarea (ej: basura, carrefour, piscina…)',
   searchAriaLabel: 'Buscar tarea',
   searchNoResults: 'Ninguna tarea encontrada',
   backLabel: '← Volver al inicio',
@@ -17,6 +17,10 @@ export const ui: UI = {
   noteText: 'Los tiempos "semanal" son la suma de cada tarea por una ocurrencia; la carga real depende de las veces que se repita esa tarea en la semana. Las tareas con "—" no tienen estimación asignada aún.',
   footerText: 'Anceu Coliving · Rural Hackers · Anceu, Ponte Caldelas, Galicia · Documento interno del equipo · 2026',
   pageTitlePersonTemplate: '{name} · Anceu Coliving',
+  preseasonNav: '🗓 Apertura de temporada',
+  suppliesNav: '📦 Suministros',
+  checklistResetLabel: 'Resetear',
+  checklistProgressTemplate: '{checked} de {total} completadas',
 };
 
 export const people: Person[] = [
@@ -43,8 +47,7 @@ export const people: Person[] = [
           { name: 'Anceu Inn (gestión fotos)', time: '10 min', desc: 'Poner/quitar fotos cuando llegan/se van colivers. Dos veces por semana (de media)' },
           { name: 'Recogida de paquetes', time: '10 min', desc: 'Todos los días, una vez (de media)' },
           { name: 'Crear grupos de cenas', time: '20 min', desc: 'Crear los grupos de cenas para la semana. Una vez a la semana' },
-          { name: 'Recoger groceries de Froiz', time: '60 min', when: 'Miércoles a las 14:00' },
-          { name: 'Recoger groceries de Frutas Nieves', time: '60 min', when: 'Miércoles a las 12:00' },
+          { name: 'Recoger groceries de Carrefour (Pontevedra)', time: '60 min', when: 'Miércoles' },
           { name: 'Vaciar deshumidificador laundry (tarde)', time: '5 min', when: 'Lunes a viernes a las 16:00' },
           { name: 'Vaciar deshumidificador laundry (noche)', time: '5 min', when: 'Lunes a viernes a las 22:00' },
           { name: 'Check espacios exteriores (entre semana)', time: '30 min', desc: 'Cenador, patio, piscina, bosque → lost & found. Lunes a viernes antes de las 10:00' },
@@ -112,7 +115,7 @@ export const people: Person[] = [
         items: [
           { name: 'Escribir grupos de cenas en Excel', time: '10 min', when: 'Una vez a la semana' },
           { name: 'Comunicación entradas/salidas de colivers', time: '20 min', when: 'Cada viernes de mañana' },
-          { name: 'Hacer el pedido de Froiz', time: '60 min', when: 'Martes de noche' },
+          { name: 'Hacer el pedido de Carrefour', time: '60 min', when: 'Martes de noche' },
           { name: 'Guardia Civil colivers', time: '10 min', desc: 'Dos veces por semana (de media)' },
           { name: 'Meter en Splitwise y Slack a colivers', time: '10 min', desc: 'Antes de la llegada de cada coliver. Dos veces por semana (de media)' },
           { name: 'Gestión de limpieza de habitaciones con Rosabel', time: '15 min', desc: 'Ver quién entra/sale y dejar cuadrante listo. Viernes antes de las 12:00' },
@@ -161,3 +164,113 @@ export const people: Person[] = [
     },
   },
 ];
+
+export const preseason: ChecklistPage = {
+  pageTitle: '🗓 Apertura de temporada',
+  subtitle: 'Checklist para preparar la reapertura del coliving. Marca cada tarea cuando esté lista.',
+  suppliesLinkLabel: '→ Ver lista de suministros',
+  groups: [
+    {
+      person: 'bari',
+      label: 'Bari',
+      items: [
+        { task: 'Comprobar que el link de invitación de Slack no ha caducado' },
+        { task: 'Verificar que el canal #da-haus existe en Slack' },
+        { task: 'Preparar fotos y hojas para el Anceu Inn' },
+        { task: 'Publicar post en Instagram anunciando la reapertura' },
+        { task: 'Revisar lista de suministros de apertura', href: '/suministros' },
+      ],
+    },
+    {
+      person: 'carmen',
+      label: 'Carmen',
+      items: [
+        { task: 'Resetear saldos de Splitwise a 0' },
+        { task: 'Verificar que el sistema de Guardia Civil sigue activo' },
+        { task: 'Revisar que el Excel de compras (Google Sheets) está actualizado y funciona' },
+        { task: 'Hacer el primer pedido de Carrefour para la apertura' },
+        { task: 'Planificar grupos de cenas de la primera semana' },
+        { task: 'Programar la primera house meeting' },
+      ],
+    },
+    {
+      person: 'se',
+      label: 'Se',
+      items: [
+        { task: 'Revisar piscina', note: 'Química del agua y limpieza' },
+        { task: 'Revisar hamacas y cojines', note: 'Estado y limpieza' },
+        { task: 'Revisar botiquín', note: 'Stock y fechas de caducidad' },
+        { task: 'Revisar material del atelier' },
+        { task: 'Revisar neveras', note: 'Encendidas, temperatura correcta, limpias' },
+        { task: 'Revisar congelador', note: 'Limpio y vacío' },
+        { task: 'Revisar lavalouza', note: 'Filtro, sal y pastillas' },
+      ],
+    },
+  ],
+};
+
+export const supplies: ChecklistPage = {
+  pageTitle: '📦 Suministros',
+  subtitle: 'Lista de suministros a revisar semanalmente. Marca lo que esté correcto.',
+  groups: [
+    {
+      label: 'Cocina básicos',
+      items: [
+        { task: 'Café' },
+        { task: 'Té / infusiones' },
+        { task: 'Azúcar' },
+        { task: 'Leche' },
+        { task: 'Aceite de oliva' },
+        { task: 'Sal' },
+        { task: 'Pan (congelado)' },
+        { task: 'Papel horno' },
+        { task: 'Bolsas de basura (pequeñas, medianas, grandes)' },
+        { task: 'Bayetas y estropajos' },
+        { task: 'Papel de cocina' },
+      ],
+    },
+    {
+      label: 'Lavalouza',
+      items: [
+        { task: 'Pastillas lavalouza' },
+        { task: 'Sal lavalouza' },
+        { task: 'Abrillantador lavalouza' },
+      ],
+    },
+    {
+      label: 'Bebidas',
+      items: [
+        { task: 'Coca-Cola' },
+        { task: 'Shandy' },
+        { task: 'Cerveza' },
+        { task: 'Helados (1€)' },
+      ],
+    },
+    {
+      label: 'Baños y habitaciones',
+      items: [
+        { task: 'Papel higiénico' },
+        { task: 'Jabón de manos (dispensadores)' },
+        { task: 'Jabón tea tree (habitaciones)' },
+        { task: 'Gel de ducha / champú' },
+      ],
+    },
+    {
+      label: 'Limpieza general',
+      items: [
+        { task: 'Limpiahogar multiusos' },
+        { task: 'Limpiador baños / WC' },
+        { task: 'Fregasuelos' },
+        { task: 'Desengrasante cocina' },
+        { task: 'Guantes de limpieza' },
+      ],
+    },
+    {
+      label: 'Lavandería',
+      items: [
+        { task: 'Detergente lavadora' },
+        { task: 'Suavizante' },
+      ],
+    },
+  ],
+};

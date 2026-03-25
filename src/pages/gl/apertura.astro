@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import LangSwitcher from '../../components/LangSwitcher.astro';
+import ChecklistSection from '../../components/ChecklistSection.astro';
+import { ui, preseason } from '../../data/gl';
+
+const progressTemplate = ui.checklistProgressTemplate;
+const resetLabel = ui.checklistResetLabel;
+const suppliesHref = '/gl/subministros';
+---
+<Layout title={preseason.pageTitle + ' · Anceu Coliving'} lang="gl" slug="apertura">
+  <LangSwitcher lang="gl" slug="apertura" />
+  <a href="/gl/" class="back-link">{ui.backLabel}</a>
+  <header>
+    <h1>{preseason.pageTitle}</h1>
+    <p class="subtitle">{preseason.subtitle}</p>
+  </header>
+
+  <div class="cl-toolbar">
+    <span id="cl-counter" class="cl-progress"></span>
+    <button id="cl-reset" class="cl-reset-btn">{resetLabel}</button>
+  </div>
+
+  <div class="checklist-wrap">
+    {preseason.groups.map(group => <ChecklistSection group={group} />)}
+  </div>
+
+  {preseason.suppliesLinkLabel && (
+    <div class="cl-supplies-link">
+      <a href={suppliesHref}>{preseason.suppliesLinkLabel}</a>
+    </div>
+  )}
+
+  <footer>{ui.footerText}</footer>
+</Layout>
+
+<script is:inline define:vars={{ progressTemplate }}>
+  function updateProgress() {
+    var all = document.querySelectorAll('.cl-checkbox');
+    var checked = document.querySelectorAll('.cl-checkbox:checked');
+    var text = progressTemplate
+      .replace('{checked}', checked.length)
+      .replace('{total}', all.length);
+    var counter = document.getElementById('cl-counter');
+    if (counter) counter.textContent = text;
+  }
+  document.querySelectorAll('.cl-checkbox').forEach(function(cb) {
+    cb.addEventListener('change', updateProgress);
+  });
+  document.getElementById('cl-reset')?.addEventListener('click', function() {
+    document.querySelectorAll('.cl-checkbox').forEach(function(cb) {
+      cb.checked = false;
+    });
+    updateProgress();
+  });
+  updateProgress();
+</script>

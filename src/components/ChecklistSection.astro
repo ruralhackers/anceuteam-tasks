@@ -1,0 +1,33 @@
+---
+import type { ChecklistGroup } from '../data/types';
+
+interface Props {
+  group: ChecklistGroup;
+}
+
+const { group } = Astro.props;
+const color = group.person ?? 'neutral';
+---
+
+<div class={`checklist-section color-${color}`}>
+  <div class="checklist-section-header">
+    {group.person && (
+      <div class={`avatar ${group.person}`}>{group.label[0]}</div>
+    )}
+    <span class="checklist-section-label">{group.label}</span>
+  </div>
+  <ul class="checklist-list">
+    {group.items.map((item, i) => (
+      <li class="checklist-item">
+        <label class="checklist-label">
+          <input type="checkbox" class="cl-checkbox" />
+          {item.href
+            ? <a href={item.href} class="checklist-task checklist-task-link">{item.task}</a>
+            : <span class="checklist-task">{item.task}</span>
+          }
+        </label>
+        {item.note && <span class="checklist-note">{item.note}</span>}
+      </li>
+    ))}
+  </ul>
+</div>

@@ -41,4 +41,27 @@ export interface UI {
   noteText: string;
   footerText: string;
   pageTitlePersonTemplate: string;  // use "{name}" as placeholder
+  preseasonNav: string;
+  suppliesNav: string;
+  checklistResetLabel: string;
+  checklistProgressTemplate: string;  // use "{checked}" and "{total}" as placeholders
+}
+
+export interface ChecklistItem {
+  task: string;
+  note?: string;
+  href?: string;
+}
+
+export interface ChecklistGroup {
+  person?: 'bari' | 'se' | 'carmen' | 'rosabel';
+  label: string;
+  items: ChecklistItem[];
+}
+
+export interface ChecklistPage {
+  pageTitle: string;
+  subtitle: string;
+  suppliesLinkLabel?: string;
+  groups: ChecklistGroup[];
 }

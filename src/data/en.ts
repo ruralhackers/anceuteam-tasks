@@ -1,4 +1,4 @@
-import type { UI, Person } from './types';
+import type { UI, Person, ChecklistPage } from './types';
 
 export const ui: UI = {
   siteTitle: 'Anceu Coliving',
@@ -17,6 +17,10 @@ export const ui: UI = {
   noteText: 'Weekly times are the sum of each task for a single occurrence; the actual workload depends on how many times the task repeats in a week. Tasks with "—" have no time estimate yet.',
   footerText: 'Anceu Coliving · Rural Hackers · Anceu, Ponte Caldelas, Galicia · Internal team document · 2026',
   pageTitlePersonTemplate: '{name} · Anceu Coliving',
+  preseasonNav: '🗓 Season opening',
+  suppliesNav: '📦 Supplies',
+  checklistResetLabel: 'Reset',
+  checklistProgressTemplate: '{checked} of {total} completed',
 };
 
 export const people: Person[] = [
@@ -43,8 +47,7 @@ export const people: Person[] = [
           { name: 'Anceu Inn (photo management)', time: '10 min', desc: 'Add/remove photos when colivers arrive/leave. Twice a week (on average)' },
           { name: 'Package collection', time: '10 min', desc: 'Every day, once (on average)' },
           { name: 'Create dinner groups', time: '20 min', desc: "Create the week's dinner groups. Once a week" },
-          { name: 'Pick up groceries from Froiz', time: '60 min', when: 'Wednesday at 14:00' },
-          { name: 'Pick up groceries from Frutas Nieves', time: '60 min', when: 'Wednesday at 12:00' },
+          { name: 'Pick up groceries from Carrefour (Pontevedra)', time: '60 min', when: 'Wednesday' },
           { name: 'Empty laundry dehumidifier (afternoon)', time: '5 min', when: 'Monday to Friday at 16:00' },
           { name: 'Empty laundry dehumidifier (night)', time: '5 min', when: 'Monday to Friday at 22:00' },
           { name: 'Check outdoor spaces (weekdays)', time: '30 min', desc: 'Gazebo, patio, pool, forest → lost & found. Monday to Friday before 10:00' },
@@ -112,7 +115,7 @@ export const people: Person[] = [
         items: [
           { name: 'Write dinner groups in Excel', time: '10 min', when: 'Once a week' },
           { name: 'Communicate coliver arrivals/departures', time: '20 min', when: 'Every Friday morning' },
-          { name: 'Place Froiz order', time: '60 min', when: 'Tuesday evening' },
+          { name: 'Place Carrefour order', time: '60 min', when: 'Tuesday evening' },
           { name: 'Coliver civil registration', time: '10 min', desc: 'Twice a week (on average)' },
           { name: 'Add colivers to Splitwise and Slack', time: '10 min', desc: 'Before each coliver arrives. Twice a week (on average)' },
           { name: 'Coordinate room cleaning with Rosabel', time: '15 min', desc: 'Check who is arriving/leaving and prepare the schedule. Friday before 12:00' },
@@ -161,3 +164,113 @@ export const people: Person[] = [
     },
   },
 ];
+
+export const preseason: ChecklistPage = {
+  pageTitle: '🗓 Season opening',
+  subtitle: 'Checklist to prepare the coliving reopening. Tick each task when done.',
+  suppliesLinkLabel: '→ View supplies list',
+  groups: [
+    {
+      person: 'bari',
+      label: 'Bari',
+      items: [
+        { task: 'Check that the Slack invitation link has not expired' },
+        { task: 'Verify that the #da-haus channel exists on Slack' },
+        { task: 'Prepare photos and sheets for the Anceu Inn' },
+        { task: 'Post on Instagram announcing the reopening' },
+        { task: 'Check opening supplies list', href: '/en/suministros' },
+      ],
+    },
+    {
+      person: 'carmen',
+      label: 'Carmen',
+      items: [
+        { task: 'Reset Splitwise balances to 0' },
+        { task: 'Verify that the Guardia Civil registration system is still active' },
+        { task: 'Check that the shopping Excel (Google Sheets) is up to date and working' },
+        { task: 'Place the first Carrefour order for the opening' },
+        { task: 'Plan dinner groups for the first week' },
+        { task: 'Schedule the first house meeting' },
+      ],
+    },
+    {
+      person: 'se',
+      label: 'Se',
+      items: [
+        { task: 'Check the pool', note: 'Water chemistry and cleanliness' },
+        { task: 'Check hammocks and cushions', note: 'Condition and cleanliness' },
+        { task: 'Check the first-aid kit', note: 'Stock and expiry dates' },
+        { task: 'Check atelier materials' },
+        { task: 'Check the fridges', note: 'Switched on, correct temperature, clean' },
+        { task: 'Check the freezer', note: 'Clean and empty' },
+        { task: 'Check the dishwasher', note: 'Filter, salt and tablets' },
+      ],
+    },
+  ],
+};
+
+export const supplies: ChecklistPage = {
+  pageTitle: '📦 Supplies',
+  subtitle: 'Supplies to check weekly. Tick what is in stock.',
+  groups: [
+    {
+      label: 'Kitchen basics',
+      items: [
+        { task: 'Coffee' },
+        { task: 'Tea / herbal infusions' },
+        { task: 'Sugar' },
+        { task: 'Milk' },
+        { task: 'Olive oil' },
+        { task: 'Salt' },
+        { task: 'Bread (frozen)' },
+        { task: 'Baking paper' },
+        { task: 'Bin bags (small, medium, large)' },
+        { task: 'Cloths and sponges' },
+        { task: 'Kitchen roll' },
+      ],
+    },
+    {
+      label: 'Dishwasher',
+      items: [
+        { task: 'Dishwasher tablets' },
+        { task: 'Dishwasher salt' },
+        { task: 'Rinse aid' },
+      ],
+    },
+    {
+      label: 'Drinks',
+      items: [
+        { task: 'Coca-Cola' },
+        { task: 'Shandy' },
+        { task: 'Beer' },
+        { task: 'Ice creams (1€)' },
+      ],
+    },
+    {
+      label: 'Bathrooms & rooms',
+      items: [
+        { task: 'Toilet paper' },
+        { task: 'Hand soap (dispensers)' },
+        { task: 'Tea tree soap (rooms)' },
+        { task: 'Shower gel / shampoo' },
+      ],
+    },
+    {
+      label: 'General cleaning',
+      items: [
+        { task: 'Multi-purpose cleaner' },
+        { task: 'Bathroom / toilet cleaner' },
+        { task: 'Floor cleaner' },
+        { task: 'Kitchen degreaser' },
+        { task: 'Cleaning gloves' },
+      ],
+    },
+    {
+      label: 'Laundry',
+      items: [
+        { task: 'Washing machine detergent' },
+        { task: 'Fabric softener' },
+      ],
+    },
+  ],
+};
