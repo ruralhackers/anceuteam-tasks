@@ -182,6 +182,8 @@ export const preseason: ChecklistPage = {
         { task: 'Revisar armarios de comida dos colivers', note: 'Que estean limpos' },
         { task: 'Revisar baldas de neveiras dos colivers', note: 'Que estean limpas' },
         { task: 'Comprobar stickers de número de habitación', note: 'Baldas de neveira e armarios de comida' },
+        { task: 'Planificar grupos de ceas da primeira semana' },
+        { task: 'Programar a primeira house meeting' },
       ],
     },
     {
@@ -192,8 +194,6 @@ export const preseason: ChecklistPage = {
         { task: 'Verificar que o sistema da Garda Civil segue activo' },
         { task: 'Revisar que o Excel de compras (Google Sheets) está actualizado e funciona' },
         { task: 'Facer o primeiro pedido de Carrefour para a apertura' },
-        { task: 'Planificar grupos de ceas da primeira semana' },
-        { task: 'Programar a primeira house meeting' },
         { task: 'Crear o álbum de fotos da tempada' },
         { task: 'Xestionar hora de chegada de colivers e avisar a Bari' },
       ],

@@ -182,6 +182,8 @@ export const preseason: ChecklistPage = {
         { task: 'Check coliver food cupboards', note: 'Make sure they are clean' },
         { task: 'Check coliver fridge shelves', note: 'Make sure they are clean' },
         { task: 'Check room number stickers', note: 'Fridge shelves and food cupboards' },
+        { task: 'Plan dinner groups for the first week' },
+        { task: 'Schedule the first house meeting' },
       ],
     },
     {
@@ -192,8 +194,6 @@ export const preseason: ChecklistPage = {
         { task: 'Verify that the Guardia Civil registration system is still active' },
         { task: 'Check that the shopping Excel (Google Sheets) is up to date and working' },
         { task: 'Place the first Carrefour order for the opening' },
-        { task: 'Plan dinner groups for the first week' },
-        { task: 'Schedule the first house meeting' },
         { task: 'Create the season photo album' },
         { task: 'Manage coliver arrival times and notify Bari' },
       ],
