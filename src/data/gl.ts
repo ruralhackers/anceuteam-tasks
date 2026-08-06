@@ -8,7 +8,7 @@ export const ui: UI = {
   searchAriaLabel: 'Buscar tarefa',
   searchNoResults: 'Non se atoparon tarefas',
   backLabel: '← Volver ao inicio',
-  teamNavLabel: 'Escoller membro do equipo',
+  teamNavLabel: 'Escoller persoa do equipo',
   weekly: '📅 Tarefas semanais',
   biweekly: '🗓️ Tarefas quincenais',
   monthly: '📆 Tarefas mensuais',
@@ -27,28 +27,29 @@ export const ui: UI = {
 export const people: Person[] = [
   {
     id: 'volunteers',
-    name: 'Voluntario(s)',
+    name: 'Voluntario/a(s)',
     initial: 'V',
     color: 'volunteers',
-    summary: '22 tarefas semanais · 14h 30min total',
+    summary: '23 tarefas semanais · 15h 30min total',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocorrencia): 14h 30min',
+        total: 'Total semanal (suma por ocorrencia): 15h 30min',
         items: [
           { name: 'Lista compra coliving', time: '30 min', desc: 'Café, leite, papel forno, etc.', when: 'Venres antes das 12:00' },
-          { name: 'Tarefas de cociña de mañá (fin de semana)', time: '60 min', desc: 'Lixo, lavalouza, tazas, free food, portas neveiras colivers', when: 'Sábado e domingo antes das 10:00' },
+          { name: 'Tarefas de cociña de mañá (fin de semana)', time: '60 min', desc: 'Lixo, lavalouza, tazas, free food, portas neveiras coliver/as', when: 'Sábado e domingo antes das 10:00' },
           { name: 'Poñer lavalouza despois de comer (entre semana)', time: '10 min', when: 'Luns a venres ás 16:00' },
           { name: 'Poñer lavalouza despois de comer (fin de semana)', time: '10 min', when: 'Sábado e domingo ás 16:00' },
           { name: 'Mandar por Slack plans coliving da semana', time: '20 min', when: 'Luns antes da house meeting' },
           { name: 'Escribir na pizarra plans coliving da semana', time: '30 min', when: 'Ata martes antes das 20:00' },
-          { name: 'Xestionar / organizar obradoiros no coliving', time: '60 min', desc: 'Axuda operativa a colivers que organizan obradoiros. Unha vez á semana' },
-          { name: 'Ser persoa de referencia para colivers', time: '60 min', desc: 'Resolver dúbidas de colivers. Unha vez á semana (de media)' },
+          { name: 'Xestionar / organizar obradoiros no coliving', time: '60 min', desc: 'Axuda operativa a coliver/as que organizan obradoiros. Unha vez á semana' },
+          { name: 'Ser persoa de referencia para coliver/as', time: '60 min', desc: 'Resolver dúbidas de coliver/as. Unha vez á semana (de media)' },
           { name: 'Onboarding', time: '60 min', desc: 'Dúas veces por semana (de media)', href: '/gl/onboarding' },
           { name: 'Posts Instagram', time: '120 min', desc: '1 post/semana · 5 stories/semana' },
-          { name: 'Anceu Inn (xestión fotos)', time: '10 min', desc: 'Poñer/quitar fotos cando chegan/marchan colivers. Dúas veces por semana (de media)' },
+          { name: 'Anceu Inn (xestión fotos)', time: '10 min', desc: 'Poñer/quitar fotos cando chegan/marchan coliver/as. Dúas veces por semana (de media)' },
           { name: 'Recollida de paquetes', time: '10 min', desc: 'Todos os días, unha vez (de media)' },
           { name: 'Crear grupos de ceas', time: '20 min', desc: 'Crear os grupos de ceas para a semana. Unha vez á semana' },
           { name: 'Recoller groceries de Carrefour (Pontevedra)', time: '60 min', when: 'Mércores' },
+          { name: 'Conteo de subministros', time: '60 min', desc: 'Ir a suministros.anceu.com e encher todo o formulario', when: 'Domingo pola tarde', href: 'https://suministros.anceu.com' },
           { name: 'Baleirar deshumidificador laundry (tarde)', time: '5 min', when: 'Luns a venres ás 16:00' },
           { name: 'Baleirar deshumidificador laundry (noite)', time: '5 min', when: 'Luns a venres ás 22:00' },
           { name: 'Check espazos exteriores (entre semana)', time: '30 min', desc: 'Cenador, patio, piscina, bosque → lost & found. Luns a venres antes das 10:00' },
@@ -74,8 +75,8 @@ export const people: Person[] = [
         total: 'Total semanal (segundo frecuencia real): 12h 30min',
         items: [
           { name: 'Tarefas de cociña de mañá (entre semana)', time: '60 min × 5 = 5h/sem', desc: 'Lixo, lavalouza, cacharros, tazas, escorredores, revisar neveira. Luns a venres antes das 10:00' },
-          { name: 'Revisar comida podre na neveira', time: '30 min', desc: 'Tirar comida aberta moito tempo ou que cheira mal (free food + neveira colivers). 1 vez á semana' },
-          { name: 'Offboarding de coliver', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida neveira/despensa, limpar baldas, meter servilleta a lavar. Dúas veces por semana (de media)' },
+          { name: 'Revisar comida podre na neveira', time: '30 min', desc: 'Tirar comida aberta moito tempo ou que cheira mal (free food + neveira coliver/as). 1 vez á semana' },
+          { name: 'Offboarding de coliver/a', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida neveira/despensa, limpar baldas, meter servilleta a lavar. Dúas veces por semana (de media)' },
           { name: 'Xestión de xardinería', time: '180 min', desc: 'Unha vez á semana' },
           { name: 'Xestión de piscina', time: '2h/sem', desc: 'Unha vez á semana' },
           { name: 'Xestión de ovellas', time: '30 min', desc: 'Unha vez á semana' },
@@ -115,20 +116,20 @@ export const people: Person[] = [
         total: 'Total semanal: 5h 5min',
         items: [
           { name: 'Escribir grupos de ceas en Excel', time: '10 min', when: 'Unha vez á semana' },
-          { name: 'Comunicación entradas/saídas de colivers', time: '20 min', when: 'Cada venres de mañá' },
+          { name: 'Comunicación entradas/saídas de coliver/as', time: '20 min', when: 'Cada venres de mañá' },
           { name: 'Facer o pedido de Carrefour', time: '60 min', when: 'Martes de noite' },
-          { name: 'Garda Civil colivers', time: '10 min', desc: 'Dúas veces por semana (de media)' },
-          { name: 'Meter en Splitwise e Slack a colivers', time: '10 min', desc: 'Antes da chegada de cada coliver. Dúas veces por semana (de media)' },
+          { name: 'Garda Civil coliver/as', time: '10 min', desc: 'Dúas veces por semana (de media)' },
+          { name: 'Meter en Splitwise e Slack a coliver/as', time: '10 min', desc: 'Antes da chegada de cada coliver/a. Dúas veces por semana (de media)' },
           { name: 'Xestión de limpeza de habitacións con Rosabel', time: '15 min', desc: 'Ver quen entra/sae e deixar cadro listo. Venres antes das 12:00' },
-          { name: 'Xestión de horas de chegadas de colivers', time: '—', desc: 'Verificar 3 días antes e enviar WhatsApp/Slack se non confirmaron hora. Semanal (segundo chegadas)' },
-          { name: 'Facturación de coworkers e xestión de facturas', time: '1h/sem' },
+          { name: 'Xestión de horas de chegadas de coliver/as', time: '—', desc: 'Verificar 3 días antes e enviar WhatsApp/Slack se non confirmaron hora. Semanal (segundo chegadas)' },
+          { name: 'Facturación de coworker/as e xestión de facturas', time: '1h/sem' },
           { name: 'Devolución de paquetes e facer pedidos', time: '2h/sem' },
         ],
       },
       biweekly: {
         total: 'Total quincenal: 30min',
         items: [
-          { name: 'Xestión de Splitwise', time: '30 min', desc: 'Aclarar pagos ao marchar colivers, gastos bebidas e lavandería con Rosabel. Quincenal' },
+          { name: 'Xestión de Splitwise', time: '30 min', desc: 'Aclarar pagos ao marchar coliver/as, gastos bebidas e lavandería con Rosabel. Quincenal' },
         ],
       },
       monthly: {
@@ -151,7 +152,7 @@ export const people: Person[] = [
       weekly: {
         total: 'Total semanal: 25h',
         items: [
-          { name: 'Limpeza de habitacións', time: '8h/sem', desc: 'Limpeza a fondo en entradas e saídas de colivers' },
+          { name: 'Limpeza de habitacións', time: '8h/sem', desc: 'Limpeza a fondo en entradas e saídas de coliver/as' },
           { name: 'Limpeza de zonas comúns', time: '6h/sem', desc: 'Salón, corredores, zonas de paso' },
           { name: 'Cociña e neveiras', time: '4h/sem', desc: 'Limpeza de cociña e neveiras (revisión neveiras 1 vez por semana)' },
           { name: 'Coworkings', time: '3h/sem', desc: 'Limpeza de espazos de coworking' },
@@ -173,15 +174,15 @@ export const preseason: ChecklistPage = {
   groups: [
     {
       person: 'volunteers',
-      label: 'Voluntario(s)',
+      label: 'Voluntario/a(s)',
       items: [
         { task: 'Comprobar que o link de invitación de Slack non caducou' },
         { task: 'Verificar que existe o canal #da-haus en Slack' },
         { task: 'Preparar fotos e follas para o Anceu Inn' },
         { task: 'Publicar post en Instagram anunciando a reapertura' },
         { task: 'Revisar lista de subministros de apertura', href: '/gl/subministros' },
-        { task: 'Revisar armarios de comida dos colivers', note: 'Que estean limpos' },
-        { task: 'Revisar baldas de neveiras dos colivers', note: 'Que estean limpas' },
+        { task: 'Revisar armarios de comida das coliver/as', note: 'Que estean limpos' },
+        { task: 'Revisar baldas de neveiras das coliver/as', note: 'Que estean limpas' },
         { task: 'Comprobar stickers de número de habitación', note: 'Baldas de neveira e armarios de comida' },
         { task: 'Planificar grupos de ceas da primeira semana' },
         { task: 'Programar a primeira house meeting' },
@@ -196,7 +197,7 @@ export const preseason: ChecklistPage = {
         { task: 'Revisar que o Excel de compras (Google Sheets) está actualizado e funciona' },
         { task: 'Facer o primeiro pedido de Carrefour para a apertura' },
         { task: 'Crear o álbum de fotos da tempada' },
-        { task: 'Xestionar hora de chegada de colivers e avisar a Voluntario(s)' },
+        { task: 'Xestionar hora de chegada de coliver/as e avisar a Voluntario/a(s)' },
       ],
     },
     {
@@ -217,7 +218,7 @@ export const preseason: ChecklistPage = {
 
 export const onboarding: TourPage = {
   pageTitle: '👋 Tour de onboarding',
-  subtitle: 'Guión do percorrido co coliver novo. Que ensinar en cada parada (~60 min). Marca cada paso cando o teñades cuberto.',
+  subtitle: 'Guión do percorrido coa persoa coliver nova. Que ensinar en cada parada (~60 min). Marca cada paso cando o teñades cuberto.',
   steps: [
     {
       place: 'Cafetería (entrada)',
@@ -240,7 +241,7 @@ export const onboarding: TourPage = {
       place: 'Zona de comida / cea',
       teach: [
         'Explicar o Anceu Inn.',
-        'Dicir que sacarán a foto do novo coliver en canto rematen o tour.',
+        'Dicir que sacarán a foto da persoa coliver nova en canto rematen o tour.',
       ],
     },
     {
@@ -255,7 +256,7 @@ export const onboarding: TourPage = {
       place: 'Sala de neveiras de bebida',
       teach: [
         'Cervexas e refrescos: 1 €.',
-        'Explicar Splitwise: gastos extra co coliving, ou cando se cea fóra — se paga un, as débedas divídense co resto de colivers.',
+        'Explicar Splitwise: gastos extra co coliving, ou cando se cea fóra — se paga alguén, as débedas divídense co resto de coliver/as.',
       ],
     },
     {
@@ -294,7 +295,7 @@ export const onboarding: TourPage = {
       ],
     },
     {
-      place: 'Habitación do coliver',
+      place: 'Habitación da persoa coliver',
       teach: [
         'Levar á habitación desa persoa en particular.',
       ],

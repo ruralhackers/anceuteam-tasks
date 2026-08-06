@@ -8,7 +8,7 @@ export const ui: UI = {
   searchAriaLabel: 'Search task',
   searchNoResults: 'No tasks found',
   backLabel: '← Back to home',
-  teamNavLabel: 'Choose team member',
+  teamNavLabel: 'Choose a person from the team',
   weekly: '📅 Weekly tasks',
   biweekly: '🗓️ Biweekly tasks',
   monthly: '📆 Monthly tasks',
@@ -30,10 +30,10 @@ export const people: Person[] = [
     name: 'Volunteer(s)',
     initial: 'V',
     color: 'volunteers',
-    summary: '22 weekly tasks · 14h 30min total',
+    summary: '23 weekly tasks · 15h 30min total',
     tasks: {
       weekly: {
-        total: 'Weekly total (sum per occurrence): 14h 30min',
+        total: 'Weekly total (sum per occurrence): 15h 30min',
         items: [
           { name: 'Coliving shopping list', time: '30 min', desc: 'Coffee, milk, baking paper, etc.', when: 'Friday before 12:00' },
           { name: 'Morning kitchen tasks (weekend)', time: '60 min', desc: 'Bins, dishwasher, cups, free food, coliver fridge doors', when: 'Saturday and Sunday before 10:00' },
@@ -49,6 +49,7 @@ export const people: Person[] = [
           { name: 'Package collection', time: '10 min', desc: 'Every day, once (on average)' },
           { name: 'Create dinner groups', time: '20 min', desc: "Create the week's dinner groups. Once a week" },
           { name: 'Pick up groceries from Carrefour (Pontevedra)', time: '60 min', when: 'Wednesday' },
+          { name: 'Supplies count', time: '60 min', desc: 'Go to suministros.anceu.com and fill in the whole form', when: 'Sunday afternoon', href: 'https://suministros.anceu.com' },
           { name: 'Empty laundry dehumidifier (afternoon)', time: '5 min', when: 'Monday to Friday at 16:00' },
           { name: 'Empty laundry dehumidifier (night)', time: '5 min', when: 'Monday to Friday at 22:00' },
           { name: 'Check outdoor spaces (weekdays)', time: '30 min', desc: 'Gazebo, patio, pool, forest → lost & found. Monday to Friday before 10:00' },
@@ -217,7 +218,7 @@ export const preseason: ChecklistPage = {
 
 export const onboarding: TourPage = {
   pageTitle: '👋 Onboarding tour',
-  subtitle: 'Script for the walkthrough with a new coliver. What to teach at each stop (~60 min). Tick each step when you have covered it.',
+  subtitle: 'Script for the walkthrough with the new coliver. What to teach at each stop (~60 min). Tick each step when you have covered it.',
   steps: [
     {
       place: 'Café (entrance)',
@@ -255,7 +256,7 @@ export const onboarding: TourPage = {
       place: 'Drinks fridge room',
       teach: [
         'Beers and soft drinks: €1.',
-        'Explain Splitwise: extra coliving expenses, or when dining out — if one person pays, debts are split with the other colivers.',
+        'Explain Splitwise: extra coliving expenses, or when dining out — if someone pays, debts are split with the other colivers.',
       ],
     },
     {
