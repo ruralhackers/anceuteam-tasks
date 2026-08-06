@@ -1,4 +1,4 @@
-import type { UI, Person, ChecklistPage } from './types';
+import type { UI, Person, ChecklistPage, TourPage } from './types';
 
 export const ui: UI = {
   siteTitle: 'Anceu Coliving',
@@ -19,16 +19,17 @@ export const ui: UI = {
   pageTitlePersonTemplate: '{name} · Anceu Coliving',
   preseasonNav: '🗓 Apertura de temporada',
   suppliesNav: '📦 Suministros',
+  onboardingNav: '👋 Tour de onboarding',
   checklistResetLabel: 'Resetear',
   checklistProgressTemplate: '{checked} de {total} completadas',
 };
 
 export const people: Person[] = [
   {
-    id: 'bari',
-    name: 'Bari',
-    initial: 'B',
-    color: 'bari',
+    id: 'volunteers',
+    name: 'Voluntario(s)',
+    initial: 'V',
+    color: 'volunteers',
     summary: '22 tareas semanales · 14h 30min total',
     tasks: {
       weekly: {
@@ -42,7 +43,7 @@ export const people: Person[] = [
           { name: 'Escribir en pizarra planes coliving de la semana', time: '30 min', when: 'Hasta martes antes de las 20:00' },
           { name: 'Gestionar / organizar talleres en el coliving', time: '60 min', desc: 'Ayuda operativa a colivers que organizan talleres. Una vez a la semana' },
           { name: 'Ser persona de referencia para colivers', time: '60 min', desc: 'Resolver dudas de colivers. Una vez a la semana (de media)' },
-          { name: 'Onboarding', time: '60 min', desc: 'Dos veces por semana (de media)' },
+          { name: 'Onboarding', time: '60 min', desc: 'Dos veces por semana (de media)', href: '/onboarding' },
           { name: 'Posts Instagram', time: '120 min', desc: '1 post/semana · 5 stories/semana' },
           { name: 'Anceu Inn (gestión fotos)', time: '10 min', desc: 'Poner/quitar fotos cuando llegan/se van colivers. Dos veces por semana (de media)' },
           { name: 'Recogida de paquetes', time: '10 min', desc: 'Todos los días, una vez (de media)' },
@@ -171,8 +172,8 @@ export const preseason: ChecklistPage = {
   suppliesLinkLabel: '→ Ver lista de suministros',
   groups: [
     {
-      person: 'bari',
-      label: 'Bari',
+      person: 'volunteers',
+      label: 'Voluntario(s)',
       items: [
         { task: 'Comprobar que el link de invitación de Slack no ha caducado' },
         { task: 'Verificar que el canal #da-haus existe en Slack' },
@@ -195,7 +196,7 @@ export const preseason: ChecklistPage = {
         { task: 'Revisar que el Excel de compras (Google Sheets) está actualizado y funciona' },
         { task: 'Hacer el primer pedido de Carrefour para la apertura' },
         { task: 'Crear el álbum de fotos de la temporada' },
-        { task: 'Gestionar hora de llegada de colivers y avisar a Bari' },
+        { task: 'Gestionar hora de llegada de colivers y avisar a Voluntario(s)' },
       ],
     },
     {
@@ -209,6 +210,93 @@ export const preseason: ChecklistPage = {
         { task: 'Revisar neveras', note: 'Encendidas, temperatura correcta, limpias' },
         { task: 'Revisar congelador', note: 'Limpio y vacío' },
         { task: 'Revisar lavalouza', note: 'Filtro, sal y pastillas' },
+      ],
+    },
+  ],
+};
+
+export const onboarding: TourPage = {
+  pageTitle: '👋 Tour de onboarding',
+  subtitle: 'Guion del recorrido con el coliver nuevo. Qué enseñar en cada parada (~60 min). Marca cada paso cuando lo hayáis cubierto.',
+  steps: [
+    {
+      place: 'Cafetería (entrada)',
+      teach: [
+        'La cafetera tiene un QR (instrucciones de uso).',
+        'La leche está en la nevera a la izquierda de la cafetera.',
+        'Tazas, café extra, leche extra, etc. están en la puerta.',
+        'Tés, tilas e infusiones están debajo de la barra.',
+      ],
+    },
+    {
+      place: 'Call room / mini office',
+      teach: [
+        'Espacio sobre todo para videollamadas.',
+        'Aprovechar para señalar lo bonita que es la vista desde el sofá.',
+        'Esa mesa se suele usar para comer/cenar cuando somos 14 o más personas.',
+      ],
+    },
+    {
+      place: 'Zona de comida / cena',
+      teach: [
+        'Explicar el Anceu Inn.',
+        'Decir que sacarán la foto del nuevo coliver en cuanto terminen el tour.',
+      ],
+    },
+    {
+      place: 'Pasillo — comida seca y servilletas',
+      teach: [
+        'La comida seca va en los cubículos tagged por habitación.',
+        'Usamos servilletas de tela (encima de los cubículos de comida).',
+        'Deberían tener el tag de la persona que llega.',
+      ],
+    },
+    {
+      place: 'Sala de neveras de bebida',
+      teach: [
+        'Cervezas y refrescos: 1 €.',
+        'Explicar Splitwise: gastos extra con el coliving, o cuando se cena fuera — si paga uno, las deudas se dividen con el resto de colivers.',
+      ],
+    },
+    {
+      place: 'Cocina',
+      teach: [
+        'Aquí sucede la magia: enseñar la cocina.',
+        'Todo está tagged por nombre; las neveras tienen una shelf por persona.',
+        'En un par de días ya se harán a dónde están las cosas.',
+        'Explicar las cenas y decirle a esta persona qué día hace la cena esta semana y con quién.',
+      ],
+    },
+    {
+      place: 'Chill house',
+      teach: [
+        'Zona multiusos: tele, leer, trabajar o echar una siesta.',
+      ],
+    },
+    {
+      place: 'Piscina, finca y coworking pequeño',
+      teach: [
+        'Piscina y parte de atrás de la finca: para sentarse y pensar.',
+        'Coworking pequeño: no se pueden recibir llamadas ni pueden entrar perros.',
+      ],
+    },
+    {
+      place: 'Makerspace',
+      teach: [
+        'Hay impresora 3D, cortadora de plotter y máquinas para reciclar plástico (Precious Plastic).',
+      ],
+    },
+    {
+      place: 'Coworking grande',
+      teach: [
+        'Aquí sí se pueden recibir llamadas.',
+        'Pueden entrar perros.',
+      ],
+    },
+    {
+      place: 'Habitación del coliver',
+      teach: [
+        'Llevar a la habitación de esa persona en particular.',
       ],
     },
   ],

@@ -1,7 +1,7 @@
 ---
 interface Props {
   lang: 'es' | 'en' | 'gl';
-  slug: string;  // "" for home, "bari" etc. for person pages
+  slug: string;  // "" for home, "volunteers" etc. for person pages
 }
 const { lang, slug } = Astro.props;
 const url = (l: string) => {

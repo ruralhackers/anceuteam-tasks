@@ -6,7 +6,9 @@ interface Props {
 const { task } = Astro.props;
 ---
 <li class="task-item">
-  <span class="task-name">{task.name}</span>
+  {task.href
+    ? <a href={task.href} class="task-name task-name-link">{task.name}</a>
+    : <span class="task-name">{task.name}</span>}
   <span class="task-time">{task.time}</span>
   {task.desc && <span class="task-desc">{task.desc}</span>}
   {task.when && <span class="task-when">{task.when}</span>}

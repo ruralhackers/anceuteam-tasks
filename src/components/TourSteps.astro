@@ -1,0 +1,23 @@
+---
+import type { TourStep } from '../data/types';
+interface Props {
+  steps: TourStep[];
+}
+const { steps } = Astro.props;
+---
+<ol class="tour-list">
+  {steps.map((step, i) => (
+    <li class="tour-step">
+      <label class="tour-label">
+        <input type="checkbox" class="cl-checkbox" />
+        <span class="tour-num" aria-hidden="true">{i + 1}</span>
+        <span class="tour-body">
+          <span class="tour-place">{step.place}</span>
+          <ul class="tour-teach">
+            {step.teach.map(line => <li>{line}</li>)}
+          </ul>
+        </span>
+      </label>
+    </li>
+  ))}
+</ol>

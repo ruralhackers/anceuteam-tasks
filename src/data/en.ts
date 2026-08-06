@@ -1,4 +1,4 @@
-import type { UI, Person, ChecklistPage } from './types';
+import type { UI, Person, ChecklistPage, TourPage } from './types';
 
 export const ui: UI = {
   siteTitle: 'Anceu Coliving',
@@ -19,16 +19,17 @@ export const ui: UI = {
   pageTitlePersonTemplate: '{name} · Anceu Coliving',
   preseasonNav: '🗓 Season opening',
   suppliesNav: '📦 Supplies',
+  onboardingNav: '👋 Onboarding tour',
   checklistResetLabel: 'Reset',
   checklistProgressTemplate: '{checked} of {total} completed',
 };
 
 export const people: Person[] = [
   {
-    id: 'bari',
-    name: 'Bari',
-    initial: 'B',
-    color: 'bari',
+    id: 'volunteers',
+    name: 'Volunteer(s)',
+    initial: 'V',
+    color: 'volunteers',
     summary: '22 weekly tasks · 14h 30min total',
     tasks: {
       weekly: {
@@ -42,7 +43,7 @@ export const people: Person[] = [
           { name: 'Write weekly coliving plans on whiteboard', time: '30 min', when: 'By Tuesday before 20:00' },
           { name: 'Manage / organise coliving workshops', time: '60 min', desc: 'Operational support to colivers organising workshops. Once a week' },
           { name: 'Be point of contact for colivers', time: '60 min', desc: 'Answer coliver questions. Once a week (on average)' },
-          { name: 'Onboarding', time: '60 min', desc: 'Twice a week (on average)' },
+          { name: 'Onboarding', time: '60 min', desc: 'Twice a week (on average)', href: '/en/onboarding' },
           { name: 'Instagram posts', time: '120 min', desc: '1 post/week · 5 stories/week' },
           { name: 'Anceu Inn (photo management)', time: '10 min', desc: 'Add/remove photos when colivers arrive/leave. Twice a week (on average)' },
           { name: 'Package collection', time: '10 min', desc: 'Every day, once (on average)' },
@@ -171,8 +172,8 @@ export const preseason: ChecklistPage = {
   suppliesLinkLabel: '→ View supplies list',
   groups: [
     {
-      person: 'bari',
-      label: 'Bari',
+      person: 'volunteers',
+      label: 'Volunteer(s)',
       items: [
         { task: 'Check that the Slack invitation link has not expired' },
         { task: 'Verify that the #da-haus channel exists on Slack' },
@@ -195,7 +196,7 @@ export const preseason: ChecklistPage = {
         { task: 'Check that the shopping Excel (Google Sheets) is up to date and working' },
         { task: 'Place the first Carrefour order for the opening' },
         { task: 'Create the season photo album' },
-        { task: 'Manage coliver arrival times and notify Bari' },
+        { task: 'Manage coliver arrival times and notify Volunteer(s)' },
       ],
     },
     {
@@ -209,6 +210,93 @@ export const preseason: ChecklistPage = {
         { task: 'Check the fridges', note: 'Switched on, correct temperature, clean' },
         { task: 'Check the freezer', note: 'Clean and empty' },
         { task: 'Check the dishwasher', note: 'Filter, salt and tablets' },
+      ],
+    },
+  ],
+};
+
+export const onboarding: TourPage = {
+  pageTitle: '👋 Onboarding tour',
+  subtitle: 'Script for the walkthrough with a new coliver. What to teach at each stop (~60 min). Tick each step when you have covered it.',
+  steps: [
+    {
+      place: 'Café (entrance)',
+      teach: [
+        'The coffee machine has a QR code (how to use it).',
+        'Milk is in the fridge to the left of the coffee machine.',
+        'Mugs, extra coffee, extra milk, etc. are by the door.',
+        'Teas, herbal infusions, etc. are under the bar.',
+      ],
+    },
+    {
+      place: 'Call room / mini office',
+      teach: [
+        'Mainly for video calls.',
+        'Point out how nice the view is from the sofa.',
+        'That table is usually used for meals when we are 14+ people.',
+      ],
+    },
+    {
+      place: 'Dining area',
+      teach: [
+        'Explain the Anceu Inn.',
+        'Say they will take the new coliver’s photo as soon as the tour ends.',
+      ],
+    },
+    {
+      place: 'Hallway — dry food & napkins',
+      teach: [
+        'Dry food goes in the cubbies tagged by room.',
+        'We use cloth napkins (above the food cubbies).',
+        'They should have the arriving person’s tag.',
+      ],
+    },
+    {
+      place: 'Drinks fridge room',
+      teach: [
+        'Beers and soft drinks: €1.',
+        'Explain Splitwise: extra coliving expenses, or when dining out — if one person pays, debts are split with the other colivers.',
+      ],
+    },
+    {
+      place: 'Kitchen',
+      teach: [
+        'Where the magic happens — show the kitchen.',
+        'Everything is tagged by name; fridges have one shelf per person.',
+        'In a couple of days they will know where things are.',
+        'Explain communal dinners and tell this person which day they cook this week and with whom.',
+      ],
+    },
+    {
+      place: 'Chill house',
+      teach: [
+        'Multi-use space: TV, reading, working, or a nap.',
+      ],
+    },
+    {
+      place: 'Pool, grounds & small coworking',
+      teach: [
+        'Pool and the back of the grounds: a place to sit and think.',
+        'Small coworking: no calls and no dogs.',
+      ],
+    },
+    {
+      place: 'Makerspace',
+      teach: [
+        'We have a 3D printer, a plotter cutter, and plastic-recycling machines (Precious Plastic).',
+      ],
+    },
+    {
+      place: 'Large coworking',
+      teach: [
+        'Calls are allowed here.',
+        'Dogs are allowed.',
+      ],
+    },
+    {
+      place: 'Coliver’s room',
+      teach: [
+        'Take them to that person’s room.',
       ],
     },
   ],

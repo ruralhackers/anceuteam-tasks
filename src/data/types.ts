@@ -3,6 +3,7 @@ export interface Task {
   time: string;   // display string as-is: "30 min", "2h/sem", "—"
   desc?: string;
   when?: string;
+  href?: string;
 }
 
 export interface TaskGroup {
@@ -11,10 +12,10 @@ export interface TaskGroup {
 }
 
 export interface Person {
-  id: 'bari' | 'se' | 'carmen' | 'rosabel';
+  id: 'volunteers' | 'se' | 'carmen' | 'rosabel';
   name: string;
   initial: string;
-  color: string;  // matches CSS variable name: "bari" | "se" | "carmen" | "rosabel"
+  color: string;  // matches CSS variable name: "volunteers" | "se" | "carmen" | "rosabel"
   summary: string;
   tasks: {
     weekly: TaskGroup;
@@ -43,8 +44,20 @@ export interface UI {
   pageTitlePersonTemplate: string;  // use "{name}" as placeholder
   preseasonNav: string;
   suppliesNav: string;
+  onboardingNav: string;
   checklistResetLabel: string;
   checklistProgressTemplate: string;  // use "{checked}" and "{total}" as placeholders
+}
+
+export interface TourStep {
+  place: string;
+  teach: string[];
+}
+
+export interface TourPage {
+  pageTitle: string;
+  subtitle: string;
+  steps: TourStep[];
 }
 
 export interface ChecklistItem {
@@ -54,7 +67,7 @@ export interface ChecklistItem {
 }
 
 export interface ChecklistGroup {
-  person?: 'bari' | 'se' | 'carmen' | 'rosabel';
+  person?: 'volunteers' | 'se' | 'carmen' | 'rosabel';
   label: string;
   items: ChecklistItem[];
 }
