@@ -6,7 +6,6 @@ import { ui, preseason } from '../../data/en';
 
 const progressTemplate = ui.checklistProgressTemplate;
 const resetLabel = ui.checklistResetLabel;
-const suppliesHref = '/en/suministros';
 ---
 <Layout title={preseason.pageTitle + ' · Anceu Coliving'} lang="en" slug="apertura">
   <LangSwitcher lang="en" slug="apertura" />
@@ -24,12 +23,6 @@ const suppliesHref = '/en/suministros';
   <div class="checklist-wrap">
     {preseason.groups.map(group => <ChecklistSection group={group} />)}
   </div>
-
-  {preseason.suppliesLinkLabel && (
-    <div class="cl-supplies-link">
-      <a href={suppliesHref}>{preseason.suppliesLinkLabel}</a>
-    </div>
-  )}
 
   <footer>{ui.footerText}</footer>
 </Layout>

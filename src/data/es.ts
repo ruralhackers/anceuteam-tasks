@@ -4,7 +4,7 @@ export const ui: UI = {
   siteTitle: 'Anceu Coliving',
   subtitle: 'Tareas y responsabilidades del equipo · 2026',
   choosePersonLabel: 'Elige una persona para ver sus tareas',
-  searchPlaceholder: 'Buscar tarea (ej: basura, carrefour, piscina…)',
+  searchPlaceholder: 'Buscar tarea (ej: basura, froiz, piscina…)',
   searchAriaLabel: 'Buscar tarea',
   searchNoResults: 'Ninguna tarea encontrada',
   backLabel: '← Volver al inicio',
@@ -18,8 +18,8 @@ export const ui: UI = {
   footerText: 'Anceu Coliving · Rural Hackers · Anceu, Ponte Caldelas, Galicia · Documento interno del equipo · 2026',
   pageTitlePersonTemplate: '{name} · Anceu Coliving',
   preseasonNav: '🗓 Apertura de temporada',
-  suppliesNav: '📦 Suministros',
   onboardingNav: '👋 Tour de onboarding',
+  offboardingNav: '🚪 Offboarding',
   checklistResetLabel: 'Resetear',
   checklistProgressTemplate: '{checked} de {total} completadas',
 };
@@ -48,7 +48,7 @@ export const people: Person[] = [
           { name: 'Anceu Inn (gestión fotos)', time: '10 min', desc: 'Poner/quitar fotos cuando llegan/se van coliver/as. Dos veces por semana (de media)' },
           { name: 'Recogida de paquetes', time: '10 min', desc: 'Todos los días, una vez (de media)' },
           { name: 'Crear grupos de cenas', time: '20 min', desc: 'Crear los grupos de cenas para la semana. Una vez a la semana' },
-          { name: 'Recoger groceries de Carrefour (Pontevedra)', time: '60 min', when: 'Miércoles' },
+          { name: 'Recoger groceries de Froiz', time: '60 min', when: 'Miércoles' },
           { name: 'Conteo de suministros', time: '60 min', desc: 'Ir a suministros.anceu.com y rellenar todo el formulario', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
           { name: 'Vaciar deshumidificador laundry (tarde)', time: '5 min', when: 'Lunes a viernes a las 16:00' },
           { name: 'Vaciar deshumidificador laundry (noche)', time: '5 min', when: 'Lunes a viernes a las 22:00' },
@@ -76,7 +76,7 @@ export const people: Person[] = [
         items: [
           { name: 'Tareas de cocina de mañana (entre semana)', time: '60 min × 5 = 5h/sem', desc: 'Basura, lavavajillas, cacharros, tazas, escurridores, revisar nevera. Lunes a viernes antes de las 10:00' },
           { name: 'Revisar comida podrida en nevera', time: '30 min', desc: 'Tirar comida abierta mucho tiempo o que huela mal (free food + nevera coliver/as). 1 vez a la semana' },
-          { name: 'Offboarding de coliver/a', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida nevera/despensa, limpiar balda, echar servilleta a lavar. Dos veces por semana (de media)' },
+          { name: 'Offboarding de coliver/a', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida nevera/despensa, limpiar balda, echar servilleta a lavar. Dos veces por semana (de media)', href: '/offboarding' },
           { name: 'Gestión de jardinería', time: '180 min', desc: 'Una vez a la semana' },
           { name: 'Gestión de piscina', time: '2h/sem', desc: 'Una vez a la semana' },
           { name: 'Gestión de ovejas', time: '30 min', desc: 'Una vez a la semana' },
@@ -103,43 +103,6 @@ export const people: Person[] = [
           { name: 'Poner hamacas y cojines (cuando no llueve)', time: '20 min', when: 'Cuando no vaya a llover' },
         ],
       },
-    },
-  },
-  {
-    id: 'carmen',
-    name: 'Carmen',
-    initial: 'C',
-    color: 'carmen',
-    summary: 'Semanal 5h 5min · Quincenal 30min · Mensual 2h 10min',
-    tasks: {
-      weekly: {
-        total: 'Total semanal: 5h 5min',
-        items: [
-          { name: 'Escribir grupos de cenas en Excel', time: '10 min', when: 'Una vez a la semana' },
-          { name: 'Comunicación entradas/salidas de coliver/as', time: '20 min', when: 'Cada viernes de mañana' },
-          { name: 'Hacer el pedido de Carrefour', time: '60 min', when: 'Martes de noche' },
-          { name: 'Guardia Civil coliver/as', time: '10 min', desc: 'Dos veces por semana (de media)' },
-          { name: 'Meter en Splitwise y Slack a coliver/as', time: '10 min', desc: 'Antes de la llegada de cada coliver/a. Dos veces por semana (de media)' },
-          { name: 'Gestión de limpieza de habitaciones con Rosabel', time: '15 min', desc: 'Ver quién entra/sale y dejar cuadrante listo. Viernes antes de las 12:00' },
-          { name: 'Gestión de horas de llegadas de coliver/as', time: '—', desc: 'Verificar 3 días antes y enviar WhatsApp/Slack si no han confirmado hora. Semanal (según llegadas)' },
-          { name: 'Facturación de coworker/as y gestión de facturas', time: '1h/sem' },
-          { name: 'Devolución de paquetes y hacer pedidos', time: '2h/sem' },
-        ],
-      },
-      biweekly: {
-        total: 'Total quincenal: 30min',
-        items: [
-          { name: 'Gestión de Splitwise', time: '30 min', desc: 'Aclarar pagos al irse coliver/as, gastos bebidas y lavandería con Rosabel. Quincenal' },
-        ],
-      },
-      monthly: {
-        total: 'Total mensual: 2h 10min',
-        items: [
-          { name: 'Programación aerotermia', time: '10 min', desc: 'Día antes de llegada: encender. Día de salida: apagar. Zonas comunes: programar 1 vez al año, apagar en verano. Mensual' },
-          { name: 'Hacer cartelería', time: '2h/mes' },
-        ],
-      },
-      situational: { total: '', items: [] },
     },
   },
   {
@@ -170,34 +133,21 @@ export const people: Person[] = [
 export const preseason: ChecklistPage = {
   pageTitle: '🗓 Apertura de temporada',
   subtitle: 'Checklist para preparar la reapertura del coliving. Marca cada tarea cuando esté lista.',
-  suppliesLinkLabel: '→ Ver lista de suministros',
   groups: [
     {
       person: 'volunteers',
       label: 'Voluntario/a(s)',
       items: [
-        { task: 'Comprobar que el link de invitación de Slack no ha caducado' },
+        { task: 'Comprobar que el link de invitación de Slack no ha caducado', href: 'https://join.slack.com/t/anceu/shared_invite/zt-jryrz9dd-WcNbXUaBFdP7niKIJ5EM9A' },
         { task: 'Verificar que el canal #da-haus existe en Slack' },
         { task: 'Preparar fotos y hojas para el Anceu Inn' },
         { task: 'Publicar post en Instagram anunciando la reapertura' },
-        { task: 'Revisar lista de suministros de apertura', href: '/suministros' },
+        { task: 'Hacer conteo de suministros de apertura', href: 'https://suministros.anceu.com' },
         { task: 'Revisar armarios de comida de coliver/as', note: 'Que estén limpios' },
         { task: 'Revisar baldas de neveras de coliver/as', note: 'Que estén limpias' },
         { task: 'Comprobar stickers de número de habitación', note: 'Baldas de nevera y armarios de comida' },
         { task: 'Planificar grupos de cenas de la primera semana' },
         { task: 'Programar la primera house meeting' },
-      ],
-    },
-    {
-      person: 'carmen',
-      label: 'Carmen',
-      items: [
-        { task: 'Resetear saldos de Splitwise a 0' },
-        { task: 'Verificar que el sistema de Guardia Civil sigue activo' },
-        { task: 'Revisar que el Excel de compras (Google Sheets) está actualizado y funciona' },
-        { task: 'Hacer el primer pedido de Carrefour para la apertura' },
-        { task: 'Crear el álbum de fotos de la temporada' },
-        { task: 'Gestionar hora de llegada de coliver/as y avisar a Voluntario/a(s)' },
       ],
     },
     {
@@ -303,68 +253,36 @@ export const onboarding: TourPage = {
   ],
 };
 
-export const supplies: ChecklistPage = {
-  pageTitle: '📦 Suministros',
-  subtitle: 'Lista de suministros a revisar semanalmente. Marca lo que esté correcto.',
-  groups: [
+export const offboarding: TourPage = {
+  pageTitle: '🚪 Offboarding',
+  subtitle: 'Checklist del equipo cuando se va una persona coliver (~20 min). Marca cada paso cuando esté hecho.',
+  steps: [
     {
-      label: 'Cocina básicos',
-      items: [
-        { task: 'Café' },
-        { task: 'Té / infusiones' },
-        { task: 'Azúcar' },
-        { task: 'Leche' },
-        { task: 'Aceite de oliva' },
-        { task: 'Sal' },
-        { task: 'Pan (congelado)' },
-        { task: 'Papel horno' },
-        { task: 'Bolsas de basura (pequeñas, medianas, grandes)' },
-        { task: 'Bayetas y estropajos' },
-        { task: 'Papel de cocina' },
+      place: 'Comida — nevera y despensa',
+      teach: [
+        'Vaciar la shelf de nevera y el cubículo de comida seca de esa persona.',
+        'Lo que quiera dejar → nevera de free food. El resto, tirar si está abierto o caducado.',
+        'Limpiar balda y cubículo.',
       ],
     },
     {
-      label: 'Lavalouza',
-      items: [
-        { task: 'Pastillas lavalouza' },
-        { task: 'Sal lavalouza' },
-        { task: 'Abrillantador lavalouza' },
+      place: 'Servilleta de tela',
+      teach: [
+        'Recoger la servilleta de tela (tag de la persona) y echarla a lavar.',
       ],
     },
     {
-      label: 'Bebidas',
-      items: [
-        { task: 'Coca-Cola' },
-        { task: 'Shandy' },
-        { task: 'Cerveza' },
-        { task: 'Helados (1€)' },
+      place: 'Anceu Inn',
+      teach: [
+        'Quitar la foto / hoja de esa persona del Anceu Inn.',
       ],
     },
     {
-      label: 'Baños y habitaciones',
-      items: [
-        { task: 'Papel higiénico' },
-        { task: 'Jabón de manos (dispensadores)' },
-        { task: 'Jabón tea tree (habitaciones)' },
-        { task: 'Gel de ducha / champú' },
-      ],
-    },
-    {
-      label: 'Limpieza general',
-      items: [
-        { task: 'Limpiahogar multiusos' },
-        { task: 'Limpiador baños / WC' },
-        { task: 'Fregasuelos' },
-        { task: 'Desengrasante cocina' },
-        { task: 'Guantes de limpieza' },
-      ],
-    },
-    {
-      label: 'Lavandería',
-      items: [
-        { task: 'Detergente lavadora' },
-        { task: 'Suavizante' },
+      place: 'Habitación',
+      teach: [
+        'Avisar a Rosabel si hace falta limpieza a fondo (entrada/salida).',
       ],
     },
   ],
 };
+

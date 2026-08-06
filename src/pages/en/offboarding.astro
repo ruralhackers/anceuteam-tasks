@@ -1,18 +1,18 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import LangSwitcher from '../../components/LangSwitcher.astro';
-import ChecklistSection from '../../components/ChecklistSection.astro';
-import { ui, supplies } from '../../data/gl';
+import TourSteps from '../../components/TourSteps.astro';
+import { ui, offboarding } from '../../data/en';
 
 const progressTemplate = ui.checklistProgressTemplate;
 const resetLabel = ui.checklistResetLabel;
 ---
-<Layout title={supplies.pageTitle + ' · Anceu Coliving'} lang="gl" slug="subministros">
-  <LangSwitcher lang="gl" slug="subministros" />
-  <a href="/gl/" class="back-link">{ui.backLabel}</a>
+<Layout title={offboarding.pageTitle + ' · Anceu Coliving'} lang="en" slug="offboarding">
+  <LangSwitcher lang="en" slug="offboarding" />
+  <a href="/en/" class="back-link">{ui.backLabel}</a>
   <header>
-    <h1>{supplies.pageTitle}</h1>
-    <p class="subtitle">{supplies.subtitle}</p>
+    <h1>{offboarding.pageTitle}</h1>
+    <p class="subtitle">{offboarding.subtitle}</p>
   </header>
 
   <div class="cl-toolbar">
@@ -20,9 +20,7 @@ const resetLabel = ui.checklistResetLabel;
     <button id="cl-reset" class="cl-reset-btn">{resetLabel}</button>
   </div>
 
-  <div class="checklist-wrap">
-    {supplies.groups.map(group => <ChecklistSection group={group} />)}
-  </div>
+  <TourSteps steps={offboarding.steps} />
 
   <footer>{ui.footerText}</footer>
 </Layout>

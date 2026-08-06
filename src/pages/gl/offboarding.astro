@@ -1,18 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import LangSwitcher from '../components/LangSwitcher.astro';
-import ChecklistSection from '../components/ChecklistSection.astro';
-import { ui, supplies } from '../data/es';
+import Layout from '../../layouts/Layout.astro';
+import LangSwitcher from '../../components/LangSwitcher.astro';
+import TourSteps from '../../components/TourSteps.astro';
+import { ui, offboarding } from '../../data/gl';
 
 const progressTemplate = ui.checklistProgressTemplate;
 const resetLabel = ui.checklistResetLabel;
 ---
-<Layout title={supplies.pageTitle + ' · Anceu Coliving'} lang="es" slug="suministros">
-  <LangSwitcher lang="es" slug="suministros" />
-  <a href="/" class="back-link">{ui.backLabel}</a>
+<Layout title={offboarding.pageTitle + ' · Anceu Coliving'} lang="gl" slug="offboarding">
+  <LangSwitcher lang="gl" slug="offboarding" />
+  <a href="/gl/" class="back-link">{ui.backLabel}</a>
   <header>
-    <h1>{supplies.pageTitle}</h1>
-    <p class="subtitle">{supplies.subtitle}</p>
+    <h1>{offboarding.pageTitle}</h1>
+    <p class="subtitle">{offboarding.subtitle}</p>
   </header>
 
   <div class="cl-toolbar">
@@ -20,9 +20,7 @@ const resetLabel = ui.checklistResetLabel;
     <button id="cl-reset" class="cl-reset-btn">{resetLabel}</button>
   </div>
 
-  <div class="checklist-wrap">
-    {supplies.groups.map(group => <ChecklistSection group={group} />)}
-  </div>
+  <TourSteps steps={offboarding.steps} />
 
   <footer>{ui.footerText}</footer>
 </Layout>

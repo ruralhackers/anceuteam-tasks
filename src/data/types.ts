@@ -12,10 +12,10 @@ export interface TaskGroup {
 }
 
 export interface Person {
-  id: 'volunteers' | 'se' | 'carmen' | 'rosabel';
+  id: 'volunteers' | 'se' | 'rosabel';
   name: string;
   initial: string;
-  color: string;  // matches CSS variable name: "volunteers" | "se" | "carmen" | "rosabel"
+  color: string;  // matches CSS variable name: "volunteers" | "se" | "rosabel"
   summary: string;
   tasks: {
     weekly: TaskGroup;
@@ -43,8 +43,8 @@ export interface UI {
   footerText: string;
   pageTitlePersonTemplate: string;  // use "{name}" as placeholder
   preseasonNav: string;
-  suppliesNav: string;
   onboardingNav: string;
+  offboardingNav: string;
   checklistResetLabel: string;
   checklistProgressTemplate: string;  // use "{checked}" and "{total}" as placeholders
 }
@@ -67,7 +67,7 @@ export interface ChecklistItem {
 }
 
 export interface ChecklistGroup {
-  person?: 'volunteers' | 'se' | 'carmen' | 'rosabel';
+  person?: 'volunteers' | 'se' | 'rosabel';
   label: string;
   items: ChecklistItem[];
 }
@@ -75,6 +75,5 @@ export interface ChecklistGroup {
 export interface ChecklistPage {
   pageTitle: string;
   subtitle: string;
-  suppliesLinkLabel?: string;
   groups: ChecklistGroup[];
 }
