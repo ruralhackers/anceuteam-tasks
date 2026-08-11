@@ -175,8 +175,11 @@ export const onboarding: TourPage = {
       teach: [
         'A cafetera ten un QR (instrucións de uso).',
         'O leite está na neveira á esquerda da cafetera.',
+        'Coidado ao pechar a neveira: queda aberta con facilidade.',
         'Tazas, café extra, leite extra, etc. están na porta.',
         'Tés, tilas e infusións están debaixo da barra.',
+        'Que escaneen o QR para darse de alta en Slack, Splitwise e coliving info. É moita información ao principio: acompañalas mentres o fan para comprobar que todo vai ben.',
+        'Se non coñecen Slack, pedir que revisen e activen as notificacións.',
       ],
     },
     {
@@ -184,13 +187,14 @@ export const onboarding: TourPage = {
       teach: [
         'Espazo sobre todo para videchamadas.',
         'Aproveitar para sinalar o bonita que é a vista dende o sofá.',
-        'Esa mesa úsase para comer/cear cando somos 14 ou máis persoas.',
       ],
     },
     {
       place: 'Zona de comida / cea',
       teach: [
         'Explicar o Anceu Inn.',
+        'Sinalar os pósters de proxectos na cafetería: amosan o impacto do coliving na aldea. Merece a pena pararse en por que este lugar importa máis aló da casa.',
+        'Mencionar os pósters de rutas / hikes por se queren explorar pola súa conta.',
         'Dicir que sacarán a foto da persoa coliver nova en canto rematen o tour.',
       ],
     },
@@ -215,19 +219,36 @@ export const onboarding: TourPage = {
         'Aquí sucede a maxia: ensinar a cociña.',
         'Todo está tagged por nome; as neveiras teñen unha shelf por persoa.',
         'Nun par de días xa se farán a onde están as cousas.',
-        'Explicar as ceas e dicirlle a esta persoa que día fai a cea esta semana e con quen.',
+        'Explicar as ceas communal (usar os pósters): dicirlle a esta persoa que día cociña esta semana e con quen.',
+        'O día da súa cea communal: cociñan e limpan elas mesmas.',
+        'Lavavaixillas: só cubertos e pratos.',
+        'O grande ou voluminoso (tixolas, olas, tapas, táboas, contedores grandes, etc.) lávase á man para non encher o lavavaixillas.',
+        'Se ven o lavavaixillas xa rematado: axudar a baleiralo e avisar ao resto de colivers.',
+        'Nas ceas communal, insistir en healthy cooking: hai QR e receitas no pasillo.',
+      ],
+    },
+    {
+      place: 'Pasillo — cociña → Chill house',
+      teach: [
+        'Maletín de medicinas.',
+        'Secadores comunitarios.',
+        'Toallas.',
+        'Produtos colectivos para carrachas e mosquitos.',
+        'Zona de obxectos perdidos.',
       ],
     },
     {
       place: 'Chill house',
       teach: [
         'Zona multiusos: tele, ler, traballar ou botar unha sesta.',
+        'Ensinar o material de deporte / outdoor dispoñible.',
       ],
     },
     {
       place: 'Piscina, finca e coworking pequeno',
       teach: [
         'Piscina e parte de atrás da finca: para sentarse e pensar.',
+        'Lembrar coller toallas e poñelas a secar na lavandería despois.',
         'Coworking pequeno: non se poden recibir chamadas nin poden entrar cans.',
       ],
     },
@@ -242,6 +263,14 @@ export const onboarding: TourPage = {
       teach: [
         'Aquí si se poden recibir chamadas.',
         'Poden entrar cans.',
+      ],
+    },
+    {
+      place: 'Conxelador — baixo o coworking',
+      teach: [
+        'Ensinar o conxelador debaixo do coworking.',
+        'Se deixan comida aí, deben etiquetala.',
+        'Xeados: 1 €.',
       ],
     },
     {

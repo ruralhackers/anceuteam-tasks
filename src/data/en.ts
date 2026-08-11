@@ -175,8 +175,11 @@ export const onboarding: TourPage = {
       teach: [
         'The coffee machine has a QR code (how to use it).',
         'Milk is in the fridge to the left of the coffee machine.',
+        'Careful when closing the fridge — it often stays slightly open.',
         'Mugs, extra coffee, extra milk, etc. are by the door.',
         'Teas, herbal infusions, etc. are under the bar.',
+        'Have them scan the QR to sign up for Slack, Splitwise, and coliving info. There’s a lot of information at the start — walk them through it with you so you can check everything works.',
+        'If they’re not familiar with Slack, ask them to check notifications and make sure they’re turned on.',
       ],
     },
     {
@@ -184,13 +187,14 @@ export const onboarding: TourPage = {
       teach: [
         'Mainly for video calls.',
         'Point out how nice the view is from the sofa.',
-        'That table is usually used for meals when we are 14+ people.',
       ],
     },
     {
       place: 'Dining area',
       teach: [
         'Explain the Anceu Inn.',
+        'Point out the project posters in the café — they show the impact of the coliving on the village. Worth pausing on why this place matters beyond the house itself.',
+        'Mention the walking / hike route posters in case they want to explore on their own.',
         'Say they will take the new coliver’s photo as soon as the tour ends.',
       ],
     },
@@ -215,19 +219,36 @@ export const onboarding: TourPage = {
         'Where the magic happens — show the kitchen.',
         'Everything is tagged by name; fridges have one shelf per person.',
         'In a couple of days they will know where things are.',
-        'Explain communal dinners and tell this person which day they cook this week and with whom.',
+        'Explain communal dinners (use the posters): tell this person which day they cook this week and with whom.',
+        'On their communal dinner day: they cook and they clean.',
+        'Dishwasher: cutlery and plates only.',
+        'Big or bulky items (pans, pots, lids, boards, large containers, etc.) are washed by hand so they don’t fill the dishwasher.',
+        'If they see the dishwasher has already finished, help empty it and let the other colivers know.',
+        'For communal dinners, stress healthy cooking: there’s a QR and recipes in the hallway.',
+      ],
+    },
+    {
+      place: 'Hallway — kitchen → Chill house',
+      teach: [
+        'Medicine kit.',
+        'Shared hair dryers.',
+        'Towels.',
+        'Shared products for ticks and mosquitoes.',
+        'Lost & found area.',
       ],
     },
     {
       place: 'Chill house',
       teach: [
         'Multi-use space: TV, reading, working, or a nap.',
+        'Show the sports / outdoor gear available to use.',
       ],
     },
     {
       place: 'Pool, grounds & small coworking',
       teach: [
         'Pool and the back of the grounds: a place to sit and think.',
+        'Remind them to take towels and hang them to dry in the laundry afterwards.',
         'Small coworking: no calls and no dogs.',
       ],
     },
@@ -242,6 +263,14 @@ export const onboarding: TourPage = {
       teach: [
         'Calls are allowed here.',
         'Dogs are allowed.',
+      ],
+    },
+    {
+      place: 'Freezer — under the coworking',
+      teach: [
+        'Show the freezer under the coworking.',
+        'If they leave food there, they should tag it.',
+        'Ice creams: €1.',
       ],
     },
     {
