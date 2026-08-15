@@ -12,10 +12,10 @@ export interface TaskGroup {
 }
 
 export interface Person {
-  id: 'volunteers' | 'se' | 'rosabel';
+  id: 'uxia' | 'petra' | 'karen' | 'se' | 'rosabel';
   name: string;
   initial: string;
-  color: string;  // matches CSS variable name: "volunteers" | "se" | "rosabel"
+  color: string;  // matches a person color class in Layout.astro
   summary: string;
   tasks: {
     weekly: TaskGroup;
@@ -67,7 +67,7 @@ export interface ChecklistItem {
 }
 
 export interface ChecklistGroup {
-  person?: 'volunteers' | 'se' | 'rosabel';
+  person?: 'uxia' | 'petra' | 'karen' | 'se' | 'rosabel';
   label: string;
   items: ChecklistItem[];
 }

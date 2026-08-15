@@ -26,42 +26,96 @@ export const ui: UI = {
 
 export const people: Person[] = [
   {
-    id: 'volunteers',
-    name: 'Voluntario/a(s)',
-    initial: 'V',
-    color: 'volunteers',
-    summary: '23 tarefas semanais · 15h 30min total',
+    id: 'uxia',
+    name: 'Uxía',
+    initial: 'U',
+    color: 'uxia',
+    summary: 'Operativa · Gardas de luns a venres',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocorrencia): 15h 30min',
+        total: 'Total semanal (suma por ocorrencia): 7h',
         items: [
           { name: 'Lista compra coliving', time: '30 min', desc: 'Café, leite, papel forno, etc.', when: 'Venres antes das 12:00' },
-          { name: 'Tarefas de cociña de mañá (fin de semana)', time: '60 min', desc: 'Lixo, lavalouza, tazas, free food, portas neveiras coliver/as', when: 'Sábado e domingo antes das 10:00' },
           { name: 'Poñer lavalouza despois de comer (entre semana)', time: '10 min', when: 'Luns a venres ás 16:00' },
-          { name: 'Poñer lavalouza despois de comer (fin de semana)', time: '10 min', when: 'Sábado e domingo ás 16:00' },
-          { name: 'Mandar por Slack plans coliving da semana', time: '20 min', when: 'Luns antes da house meeting' },
-          { name: 'Escribir na pizarra plans coliving da semana', time: '30 min', when: 'Ata martes antes das 20:00' },
-          { name: 'Xestionar / organizar obradoiros no coliving', time: '60 min', desc: 'Axuda operativa a coliver/as que organizan obradoiros. Unha vez á semana' },
-          { name: 'Ser persoa de referencia para coliver/as', time: '60 min', desc: 'Resolver dúbidas de coliver/as. Unha vez á semana (de media)' },
-          { name: 'Onboarding', time: '60 min', desc: 'Dúas veces por semana (de media)', href: '/gl/onboarding' },
-          { name: 'Posts Instagram', time: '120 min', desc: '1 post/semana · 5 stories/semana' },
-          { name: 'Anceu Inn (xestión fotos)', time: '10 min', desc: 'Poñer/quitar fotos cando chegan/marchan coliver/as. Dúas veces por semana (de media)' },
-          { name: 'Recollida de paquetes', time: '10 min', desc: 'Todos os días, unha vez (de media)' },
           { name: 'Crear grupos de ceas', time: '20 min', desc: 'Crear os grupos de ceas para a semana. Unha vez á semana' },
           { name: 'Recoller groceries de Froiz', time: '60 min', when: 'Mércores' },
           { name: 'Conteo de subministros', time: '60 min', desc: 'Ir a suministros.anceu.com e encher todo o formulario', when: 'Domingo pola tarde', href: 'https://suministros.anceu.com' },
           { name: 'Baleirar deshumidificador laundry (tarde)', time: '5 min', when: 'Luns a venres ás 16:00' },
           { name: 'Baleirar deshumidificador laundry (noite)', time: '5 min', when: 'Luns a venres ás 22:00' },
           { name: 'Check espazos exteriores (entre semana)', time: '30 min', desc: 'Cenador, patio, piscina, bosque → lost & found. Luns a venres antes das 10:00' },
+          { name: 'Revisión e orde de espazos interiores (entre semana)', time: '30 min', desc: 'Comprobar que non haxa cousas tiradas, que os coxíns estean ordenados nos sofás, que a Chill House estea ordenada e que non haxa tazas, roupa ou obxectos esquecidos nas zonas comúns. Deixar os espazos visualmente ordenados.', when: 'Luns a venres antes das 10:00' },
+          { name: 'Recollida de paquetes (entre semana)', time: '10 min', desc: 'Revisar e recoller paquetes de luns a venres' },
+          { name: 'Ser persoa de referencia para coliver/as (entre semana)', time: '60 min', desc: 'Resolver dúbidas de coliver/as de luns a venres' },
+          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Uxía, Petra e Karen rotan a facilitación.' },
+          { name: 'Reunión semanal co equipo', time: '60 min', desc: 'Reu con Agus e Afri para planear a semana. Luns ás 17:00' },
+        ],
+      },
+      biweekly: { total: '', items: [] },
+      monthly: { total: '', items: [] },
+      situational: {
+        total: 'Total por chegada: 15 min',
+        items: [
+          { name: 'Preparar balda de neveira e espazo de comida seca para unha chegada', time: '15 min', desc: 'Antes de que chegue alguén, limpar os seus dous espazos asignados. Por exemplo, se chega unha persoa á habitación 105, a balda de neveira marcada como 105 e o espazo 105 de comida seca deben estar limpos.', when: 'Antes de cada chegada' },
+        ],
+      },
+    },
+  },
+  {
+    id: 'petra',
+    name: 'Petra',
+    initial: 'P',
+    color: 'petra',
+    summary: 'Comunidade e onboardings · Gardas de fin de semana',
+    tasks: {
+      weekly: {
+        total: 'Total semanal (suma por ocorrencia): 8h 35min',
+        items: [
+          { name: 'Tarefas de cociña de mañá (fin de semana)', time: '60 min', desc: 'Baleirar o lavalouza, tirar o lixo, tirar a comida que estea mala nas neveiras e levar as tazas á cafetería.', when: 'Sábado e domingo antes das 10:00' },
+          { name: 'Poñer lavalouza despois de comer (fin de semana)', time: '10 min', when: 'Sábado e domingo ás 16:00' },
+          { name: 'Mandar por Slack plans coliving da semana', time: '20 min', when: 'Luns antes da house meeting' },
+          { name: 'Mandar recordatorio por Slack antes da house meeting', time: '10 min', desc: 'Pedir que, se alguén quere propoñer un plan, fale con alguén do equipo.', when: 'Luns antes da house meeting' },
+          { name: 'Xestionar / organizar obradoiros no coliving', time: '60 min', desc: 'Axuda operativa a coliver/as que organizan obradoiros. Unha vez á semana' },
+          { name: 'Onboarding', time: '60 min', desc: 'Liderar os primeiros onboardings con Karen e ensinarlle o proceso. Dúas veces por semana (de media)', href: '/gl/onboarding' },
+          { name: 'Recollida de paquetes (fin de semana)', time: '10 min', desc: 'Revisar e recoller paquetes o sábado e o domingo' },
           { name: 'Check espazos exteriores (fin de semana)', time: '30 min', desc: 'Cenador, patio, piscina, bosque → lost & found. Sábado e domingo antes das 10:00' },
-          { name: 'House meeting', time: '30 min', desc: 'Family meeting semanal. Luns ás 21:00' },
-          { name: 'Actividades de community building', time: '90 min', desc: 'Martes ou xoves 1h + actividade fin de semana 2h máx. Dúas veces por semana (de media)' },
+          { name: 'Revisión e orde de espazos interiores (fin de semana)', time: '30 min', desc: 'Comprobar que non haxa cousas tiradas, que os coxíns estean ordenados nos sofás, que a Chill House estea ordenada e que non haxa tazas, roupa ou obxectos esquecidos nas zonas comúns. Deixar os espazos visualmente ordenados.', when: 'Sábado e domingo antes das 10:00' },
+          { name: 'Ser persoa de referencia para coliver/as (fin de semana)', time: '60 min', desc: 'Resolver dúbidas de coliver/as o sábado e o domingo' },
+          { name: 'House meeting', time: '15 min', desc: 'Preparar e facilitar a family meeting semanal. Non debe durar máis de 15 minutos.', when: 'Luns ás 21:00' },
+          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Uxía, Petra e Karen rotan a facilitación.' },
           { name: 'Reunión semanal co equipo', time: '60 min', desc: 'Reu con Agus e Afri para planear a semana. Luns ás 17:00' },
         ],
       },
       biweekly: { total: '', items: [] },
       monthly: { total: '', items: [] },
       situational: { total: '', items: [] },
+    },
+  },
+  {
+    id: 'karen',
+    name: 'Karen',
+    initial: 'K',
+    color: 'karen',
+    summary: 'Contido, fotografía e apoio nos onboardings',
+    tasks: {
+      weekly: {
+        total: 'Total semanal (suma por ocorrencia): 6h 10min',
+        items: [
+          { name: 'Escribir na pizarra plans coliving da semana', time: '30 min', when: 'Ata martes antes das 20:00' },
+          { name: 'Aprender e apoiar os onboardings', time: '60 min', desc: 'Facer os primeiros onboardings con Petra para aprender o proceso', href: '/gl/onboarding' },
+          { name: 'Posts Instagram', time: '120 min', desc: 'Liderar o contido: 1 post/semana · 5 stories/semana. Comprobar que as fotos se suban ao álbum de Google Photos.' },
+          { name: 'Anceu Inn (xestión fotos)', time: '10 min', desc: 'Poñer/quitar fotos cando chegan/marchan coliver/as. Dúas veces por semana (de media)' },
+          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Uxía, Petra e Karen rotan a facilitación.' },
+          { name: 'Reunión semanal co equipo', time: '60 min', desc: 'Reu con Agus e Afri para planear a semana. Luns ás 17:00' },
+        ],
+      },
+      biweekly: { total: '', items: [] },
+      monthly: { total: '', items: [] },
+      situational: {
+        total: 'Tarefa de apertura: 2h',
+        items: [
+          { name: 'Fotografar todos os espazos de Anceu', time: '120 min', desc: 'Facer fotos actualizadas de todos os espazos interiores e exteriores e subilas ao álbum de Google Photos.', when: 'Durante a primeira semana' },
+        ],
+      },
     },
   },
   {
@@ -74,7 +128,7 @@ export const people: Person[] = [
       weekly: {
         total: 'Total semanal (segundo frecuencia real): 12h 30min',
         items: [
-          { name: 'Tarefas de cociña de mañá (entre semana)', time: '60 min × 5 = 5h/sem', desc: 'Lixo, lavalouza, cacharros, tazas, escorredores, revisar neveira. Luns a venres antes das 10:00' },
+          { name: 'Tarefas de cociña de mañá (entre semana)', time: '60 min × 5 = 5h/sem', desc: 'Baleirar o lavalouza, tirar o lixo, tirar a comida que estea mala nas neveiras e levar as tazas á cafetería.', when: 'Luns a venres antes das 10:00' },
           { name: 'Revisar comida podre na neveira', time: '30 min', desc: 'Tirar comida aberta moito tempo ou que cheira mal (free food + neveira coliver/as). 1 vez á semana' },
           { name: 'Offboarding de coliver/a', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida neveira/despensa, limpar baldas, meter servilleta a lavar. Dúas veces por semana (de media)', href: '/gl/offboarding' },
           { name: 'Xestión de xardinería', time: '180 min', desc: 'Unha vez á semana' },
@@ -135,19 +189,33 @@ export const preseason: ChecklistPage = {
   subtitle: 'Checklist para preparar a reapertura do coliving. Marca cada tarefa cando estea lista.',
   groups: [
     {
-      person: 'volunteers',
-      label: 'Voluntario/a(s)',
+      person: 'uxia',
+      label: 'Uxía',
       items: [
-        { task: 'Comprobar que o link de invitación de Slack non caducou', href: 'https://join.slack.com/t/anceu/shared_invite/zt-jryrz9dd-WcNbXUaBFdP7niKIJ5EM9A' },
-        { task: 'Verificar que existe o canal #da-haus en Slack' },
-        { task: 'Preparar fotos e follas para o Anceu Inn' },
-        { task: 'Publicar post en Instagram anunciando a reapertura' },
         { task: 'Facer conteo de subministros de apertura', href: 'https://suministros.anceu.com' },
         { task: 'Revisar armarios de comida das coliver/as', note: 'Que estean limpos' },
         { task: 'Revisar baldas de neveiras das coliver/as', note: 'Que estean limpas' },
-        { task: 'Comprobar stickers de número de habitación', note: 'Baldas de neveira e armarios de comida' },
         { task: 'Planificar grupos de ceas da primeira semana' },
+      ],
+    },
+    {
+      person: 'petra',
+      label: 'Petra',
+      items: [
+        { task: 'Comprobar que o link de invitación de Slack non caducou', href: 'https://join.slack.com/t/anceu/shared_invite/zt-jryrz9dd-WcNbXUaBFdP7niKIJ5EM9A' },
+        { task: 'Verificar que existe o canal #da-haus en Slack' },
         { task: 'Programar a primeira house meeting' },
+        { task: 'Preparar o primeiro onboarding con Karen' },
+      ],
+    },
+    {
+      person: 'karen',
+      label: 'Karen',
+      items: [
+        { task: 'Preparar fotos e follas para o Anceu Inn' },
+        { task: 'Publicar post en Instagram anunciando a reapertura' },
+        { task: 'Comprobar stickers de número de habitación', note: 'Baldas de neveira e armarios de comida' },
+        { task: 'Fotografar todos os espazos interiores e exteriores de Anceu' },
       ],
     },
     {
@@ -282,6 +350,14 @@ export const onboarding: TourPage = {
       ],
     },
     {
+      place: 'Conxelador — baixo o coworking',
+      teach: [
+        'Ensinar o conxelador debaixo do coworking (aparte da sala de neveiras de bebida).',
+        'Se deixan comida alí, deben etiquetala.',
+        'Xeados: 1 € e hai que anotalos na pizarra.',
+      ],
+    },
+    {
       place: 'Makerspace',
       teach: [
         'Hai impresora 3D, cortadora de plotter e máquinas para reciclar plástico (Precious Plastic).',
@@ -304,14 +380,6 @@ export const onboarding: TourPage = {
         'Anotar na pizarra.',
         'Os deterxentes están no armario.',
         'Tamén hai hamacas e tumbonas aquí.',
-      ],
-    },
-    {
-      place: 'Conxelador — baixo o coworking',
-      teach: [
-        'Ensinar o conxelador debaixo do coworking (aparte da sala de neveiras de bebida).',
-        'Se deixan comida aí, deben etiquetala.',
-        'Xeados: 1 €.',
       ],
     },
     {
@@ -358,4 +426,3 @@ export const offboarding: TourPage = {
     },
   ],
 };
-

@@ -2,7 +2,7 @@
 interface Props {
   title: string;
   lang: 'es' | 'en' | 'gl';
-  slug: string;  // "" for home, "volunteers" etc. for person pages
+  slug: string;  // "" for home, "uxia" etc. for person pages
 }
 
 const { title, lang, slug } = Astro.props;
@@ -33,8 +33,9 @@ const altUrls = {
       --card: #fff;
       --text: #2d2a26;
       --text-muted: #6b6560;
-      --volunteers: #2563eb;
-      --volunteers-soft: #eff6ff;
+      --uxia: #2563eb;
+      --petra: #d97706;
+      --karen: #db2777;
       --se: #059669;
       --se-soft: #ecfdf5;
       --rosabel: #6d28d9;
@@ -64,7 +65,9 @@ const altUrls = {
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1.25rem; color: #fff;
     }
-    .avatar.volunteers { background: var(--volunteers); }
+    .avatar.uxia { background: var(--uxia); }
+    .avatar.petra { background: var(--petra); }
+    .avatar.karen { background: var(--karen); }
     .avatar.se { background: var(--se); }
     .avatar.rosabel { background: var(--rosabel); }
     .person-header h2 { font-size: 1.35rem; font-weight: 700; margin: 0; letter-spacing: -0.02em; }
@@ -80,7 +83,9 @@ const altUrls = {
     .task-desc { font-size: 0.9rem; color: var(--text-muted); grid-column: 1; }
     .task-when { font-size: 0.8rem; color: var(--text-muted); grid-column: 1; }
     .task-time { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 500; white-space: nowrap; grid-row: 1 / -1; align-self: center; }
-    .color-volunteers .task-time { color: var(--volunteers); }
+    .color-uxia .task-time { color: var(--uxia); }
+    .color-petra .task-time { color: var(--petra); }
+    .color-karen .task-time { color: var(--karen); }
     .color-se .task-time { color: var(--se); }
     .color-rosabel .task-time { color: var(--rosabel); }
     .block-total { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); }
@@ -97,7 +102,9 @@ const altUrls = {
       border: 2px solid var(--border); transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; min-width: 280px;
     }
     .person-card-link:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
-    .person-card-link.volunteers:hover { border-color: var(--volunteers); }
+    .person-card-link.uxia:hover { border-color: var(--uxia); }
+    .person-card-link.petra:hover { border-color: var(--petra); }
+    .person-card-link.karen:hover { border-color: var(--karen); }
     .person-card-link.se:hover { border-color: var(--se); }
     .person-card-link.rosabel:hover { border-color: var(--rosabel); }
     .card-avatar {
@@ -105,7 +112,9 @@ const altUrls = {
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1.75rem; color: #fff; margin-bottom: 1rem;
     }
-    .card-avatar.volunteers { background: var(--volunteers); }
+    .card-avatar.uxia { background: var(--uxia); }
+    .card-avatar.petra { background: var(--petra); }
+    .card-avatar.karen { background: var(--karen); }
     .card-avatar.se { background: var(--se); }
     .card-avatar.rosabel { background: var(--rosabel); }
     .card-name { font-size: 1.5rem; font-weight: 700; margin: 0 0 0.5rem; }
@@ -127,7 +136,9 @@ const altUrls = {
     .search-result-item:last-child { border-bottom: none; }
     .search-result-item:hover { background: var(--bg); }
     .search-result-person { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
-    .search-result-person.volunteers { color: var(--volunteers); }
+    .search-result-person.uxia { color: var(--uxia); }
+    .search-result-person.petra { color: var(--petra); }
+    .search-result-person.karen { color: var(--karen); }
     .search-result-person.se { color: var(--se); }
     .search-result-person.rosabel { color: var(--rosabel); }
     .search-result-task { font-weight: 500; font-size: 0.95rem; }
@@ -162,7 +173,9 @@ const altUrls = {
       background: var(--bg);
     }
     .checklist-section-label { font-weight: 600; font-size: 0.95rem; }
-    .color-volunteers .checklist-section-label { color: var(--volunteers); }
+    .color-uxia .checklist-section-label { color: var(--uxia); }
+    .color-petra .checklist-section-label { color: var(--petra); }
+    .color-karen .checklist-section-label { color: var(--karen); }
     .color-se .checklist-section-label { color: var(--se); }
     .color-rosabel .checklist-section-label { color: var(--rosabel); }
     .color-neutral .checklist-section-label { color: var(--text-muted); }
