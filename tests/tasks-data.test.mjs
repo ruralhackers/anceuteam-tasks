@@ -34,7 +34,7 @@ test('assigns the agreed Spanish responsibilities to each person', () => {
   const karen = personBlock(source, 'karen');
 
   for (const task of [
-    'Lista compra coliving',
+    'Conteo de suministros y lista de compra coliving',
     'Crear grupos de cenas',
     'Recoger groceries de Froiz',
     'Conteo de suministros',
@@ -54,7 +54,7 @@ test('assigns the agreed Spanish responsibilities to each person', () => {
   for (const task of [
     'Posts Instagram',
     'Anceu Inn (gestión fotos)',
-    'Escribir en pizarra planes coliving de la semana',
+    'Escribir un post semanal para el blog',
     'Fotografiar todos los espacios de Anceu',
     'Aprender y apoyar los onboardings',
   ]) assert.ok(karen.includes(task), `Karen is missing ${task}`);
@@ -135,4 +135,44 @@ test('limits the house meeting and adds Petra’s pre-meeting Slack reminder', (
   const petraGl = personBlock(localeSources.gl, 'petra');
   assert.match(petraGl, /Mandar recordatorio por Slack antes da house meeting/);
   assert.match(petraGl, /House meeting', time: '15 min'/);
+});
+
+test('applies the revised groceries, blog and whiteboard ownership', () => {
+  const uxiaEs = personBlock(localeSources.es, 'uxia');
+  const petraEs = personBlock(localeSources.es, 'petra');
+  const karenEs = personBlock(localeSources.es, 'karen');
+
+  assert.doesNotMatch(uxiaEs, /name: 'Lista compra coliving'/);
+  assert.match(uxiaEs, /Conteo de suministros y lista de compra coliving/);
+  assert.match(uxiaEs, /Recoger groceries de Froiz'.*when: 'Lunes'/);
+  assert.match(uxiaEs, /Escribir en pizarra planes coliving de la semana/);
+  assert.doesNotMatch(karenEs, /Escribir en pizarra planes coliving de la semana/);
+
+  assert.match(karenEs, /Escribir un post semanal para el blog/);
+  assert.match(karenEs, /Google Doc.*Agus y Afri/is);
+
+  assert.doesNotMatch(uxiaEs, /Ser persona de referencia/);
+  assert.doesNotMatch(petraEs, /Ser persona de referencia/);
+
+  for (const source of Object.values(localeSources)) {
+    assert.doesNotMatch(source, /point of contact for colivers|persoa de referencia para coliver\/as|persona de referencia para coliver\/as/i);
+  }
+});
+
+test('makes package collection a shared situational task for all three', () => {
+  for (const [locale, taskName] of Object.entries({
+    es: 'Recogida de paquetes (tarea compartida)',
+    en: 'Package collection (shared task)',
+    gl: 'Recollida de paquetes (tarefa compartida)',
+  })) {
+    const source = localeSources[locale];
+    assert.doesNotMatch(source, /Package collection \(weekdays\)|Package collection \(weekend\)|Recogida de paquetes \(entre semana\)|Recogida de paquetes \(fin de semana\)|Recollida de paquetes \(entre semana\)|Recollida de paquetes \(fin de semana\)/);
+
+    for (const id of ['uxia', 'petra', 'karen']) {
+      const block = personBlock(source, id);
+      const situational = block.slice(block.indexOf('situational:'));
+      assert.ok(situational.includes(taskName), `${locale}/${id} is missing the shared package task`);
+      assert.match(situational, /1h\/week shared|1h\/semana compartida|1h\/sem compartida/);
+    }
+  }
 });

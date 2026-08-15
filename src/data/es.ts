@@ -33,19 +33,17 @@ export const people: Person[] = [
     summary: 'Operativa · Guardias de lunes a viernes',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocurrencia): 7h',
+        total: 'Total semanal (suma por ocurrencia): 5h 50min',
         items: [
-          { name: 'Lista compra coliving', time: '30 min', desc: 'Café, leche, papel horno, etc.', when: 'Viernes antes de las 12:00' },
           { name: 'Poner lavavajillas después de comer (entre semana)', time: '10 min', when: 'Lunes a viernes a las 16:00' },
           { name: 'Crear grupos de cenas', time: '20 min', desc: 'Crear los grupos de cenas para la semana. Una vez a la semana' },
-          { name: 'Recoger groceries de Froiz', time: '60 min', when: 'Miércoles' },
-          { name: 'Conteo de suministros', time: '60 min', desc: 'Ir a suministros.anceu.com y rellenar todo el formulario', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
+          { name: 'Recoger groceries de Froiz', time: '60 min', when: 'Lunes' },
+          { name: 'Conteo de suministros y lista de compra coliving', time: '60 min', desc: 'Ir a suministros.anceu.com y rellenar todo el formulario para preparar la compra', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
+          { name: 'Escribir en pizarra planes coliving de la semana', time: '30 min', when: 'Hasta martes antes de las 20:00' },
           { name: 'Vaciar deshumidificador laundry (tarde)', time: '5 min', when: 'Lunes a viernes a las 16:00' },
           { name: 'Vaciar deshumidificador laundry (noche)', time: '5 min', when: 'Lunes a viernes a las 22:00' },
           { name: 'Check espacios exteriores (entre semana)', time: '30 min', desc: 'Cenador, patio, piscina, bosque → lost & found. Lunes a viernes antes de las 10:00' },
           { name: 'Revisión y orden de espacios interiores (entre semana)', time: '30 min', desc: 'Comprobar que no haya cosas tiradas, que los cojines estén ordenados en los sofás, que la Chill House esté ordenada y que no haya tazas, ropa u objetos olvidados en las zonas comunes. Dejar los espacios visualmente ordenados.', when: 'Lunes a viernes antes de las 10:00' },
-          { name: 'Recogida de paquetes (entre semana)', time: '10 min', desc: 'Revisar y recoger paquetes de lunes a viernes' },
-          { name: 'Ser persona de referencia para coliver/as (entre semana)', time: '60 min', desc: 'Resolver dudas de coliver/as de lunes a viernes' },
           { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Una actividad entre semana y otra el fin de semana. Uxía, Petra y Karen rotan la facilitación.' },
           { name: 'Reunión semanal con el equipo', time: '60 min', desc: 'Reu con Agus y Afri para planear la semana. Lunes a las 17:00' },
         ],
@@ -53,9 +51,10 @@ export const people: Person[] = [
       biweekly: { total: '', items: [] },
       monthly: { total: '', items: [] },
       situational: {
-        total: 'Total por llegada: 15 min',
+        total: 'Tareas puntuales y compartidas',
         items: [
           { name: 'Preparar balda de nevera y espacio de comida seca para una llegada', time: '15 min', desc: 'Antes de que llegue alguien, limpiar sus dos espacios asignados. Por ejemplo, si llega una persona a la habitación 105, la balda de nevera marcada como 105 y el espacio 105 de comida seca deben estar limpios.', when: 'Antes de cada llegada' },
+          { name: 'Recogida de paquetes (tarea compartida)', time: '1h/semana compartida', desc: 'Tarea compartida entre Uxía, Petra y Karen. Recoger los paquetes cuando lleguen.' },
         ],
       },
     },
@@ -68,7 +67,7 @@ export const people: Person[] = [
     summary: 'Comunidad y onboardings · Guardias de fin de semana',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocurrencia): 8h 35min',
+        total: 'Total semanal (suma por ocurrencia): 7h 25min',
         items: [
           { name: 'Tareas de cocina de mañana (fin de semana)', time: '60 min', desc: 'Vaciar el lavavajillas, tirar las basuras, tirar la comida que esté mala en las neveras y llevar las tazas a la cafetería.', when: 'Sábado y domingo antes de las 10:00' },
           { name: 'Poner lavavajillas después de comer (fin de semana)', time: '10 min', when: 'Sábado y domingo a las 16:00' },
@@ -76,10 +75,8 @@ export const people: Person[] = [
           { name: 'Mandar recordatorio por Slack antes de la house meeting', time: '10 min', desc: 'Pedir que, si alguien quiere proponer un plan, hable con alguien del equipo.', when: 'Lunes antes de la house meeting' },
           { name: 'Gestionar / organizar talleres en el coliving', time: '60 min', desc: 'Ayuda operativa a coliver/as que organizan talleres. Una vez a la semana' },
           { name: 'Onboarding', time: '60 min', desc: 'Liderar los primeros onboardings junto con Karen y enseñarle el proceso. Dos veces por semana (de media)', href: '/onboarding' },
-          { name: 'Recogida de paquetes (fin de semana)', time: '10 min', desc: 'Revisar y recoger paquetes el sábado y el domingo' },
           { name: 'Check espacios exteriores (fin de semana)', time: '30 min', desc: 'Cenador, patio, piscina, bosque → lost & found. Sábado y domingo antes de las 10:00' },
           { name: 'Revisión y orden de espacios interiores (fin de semana)', time: '30 min', desc: 'Comprobar que no haya cosas tiradas, que los cojines estén ordenados en los sofás, que la Chill House esté ordenada y que no haya tazas, ropa u objetos olvidados en las zonas comunes. Dejar los espacios visualmente ordenados.', when: 'Sábado y domingo antes de las 10:00' },
-          { name: 'Ser persona de referencia para coliver/as (fin de semana)', time: '60 min', desc: 'Resolver dudas de coliver/as el sábado y el domingo' },
           { name: 'House meeting', time: '15 min', desc: 'Preparar y facilitar la family meeting semanal. No debe durar más de 15 minutos.', when: 'Lunes a las 21:00' },
           { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Una actividad entre semana y otra el fin de semana. Uxía, Petra y Karen rotan la facilitación.' },
           { name: 'Reunión semanal con el equipo', time: '60 min', desc: 'Reu con Agus y Afri para planear la semana. Lunes a las 17:00' },
@@ -87,7 +84,12 @@ export const people: Person[] = [
       },
       biweekly: { total: '', items: [] },
       monthly: { total: '', items: [] },
-      situational: { total: '', items: [] },
+      situational: {
+        total: 'Tarea compartida',
+        items: [
+          { name: 'Recogida de paquetes (tarea compartida)', time: '1h/semana compartida', desc: 'Tarea compartida entre Uxía, Petra y Karen. Recoger los paquetes cuando lleguen.' },
+        ],
+      },
     },
   },
   {
@@ -98,11 +100,11 @@ export const people: Person[] = [
     summary: 'Contenido, fotografía y apoyo en onboardings',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocurrencia): 6h 10min',
+        total: 'Total semanal (suma por ocurrencia): 7h 40min',
         items: [
-          { name: 'Escribir en pizarra planes coliving de la semana', time: '30 min', when: 'Hasta martes antes de las 20:00' },
           { name: 'Aprender y apoyar los onboardings', time: '60 min', desc: 'Hacer los primeros onboardings junto con Petra para aprender el proceso', href: '/onboarding' },
           { name: 'Posts Instagram', time: '120 min', desc: 'Liderar el contenido: 1 post/semana · 5 stories/semana. Comprobar que las fotos se suban al álbum de Google Photos.' },
+          { name: 'Escribir un post semanal para el blog', time: '120 min', desc: 'Escribir el borrador en un Google Doc y mandárselo a Agus y Afri para que lo revisen.', when: 'Una vez por semana' },
           { name: 'Anceu Inn (gestión fotos)', time: '10 min', desc: 'Poner/quitar fotos cuando llegan/se van coliver/as. Dos veces por semana (de media)' },
           { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Una actividad entre semana y otra el fin de semana. Uxía, Petra y Karen rotan la facilitación.' },
           { name: 'Reunión semanal con el equipo', time: '60 min', desc: 'Reu con Agus y Afri para planear la semana. Lunes a las 17:00' },
@@ -111,9 +113,10 @@ export const people: Person[] = [
       biweekly: { total: '', items: [] },
       monthly: { total: '', items: [] },
       situational: {
-        total: 'Tarea de apertura: 2h',
+        total: 'Tareas puntuales y compartidas',
         items: [
           { name: 'Fotografiar todos los espacios de Anceu', time: '120 min', desc: 'Hacer fotos actualizadas de todos los espacios interiores y exteriores y subirlas al álbum de Google Photos.', when: 'Durante la primera semana' },
+          { name: 'Recogida de paquetes (tarea compartida)', time: '1h/semana compartida', desc: 'Tarea compartida entre Uxía, Petra y Karen. Recoger los paquetes cuando lleguen.' },
         ],
       },
     },
