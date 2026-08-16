@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
+import { people as peopleEn } from '../src/data/en.ts';
+import { people as peopleEs } from '../src/data/es.ts';
+import { people as peopleGl } from '../src/data/gl.ts';
 
 const root = new URL('../', import.meta.url);
 const read = (path) => readFileSync(new URL(path, root), 'utf8');
@@ -17,6 +20,21 @@ function personBlock(source, id) {
   const next = source.indexOf("\n  {\n    id:", start + 1);
   return source.slice(start, next === -1 ? source.indexOf('\n];', start) : next);
 }
+
+test('links the dinner-groups task to the active groceries sheet in every locale', () => {
+  const expectedHref = 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit';
+  const fixtures = [
+    [peopleEs, 'Crear grupos de cenas'],
+    [peopleEn, 'Create dinner groups'],
+    [peopleGl, 'Crear grupos de ceas'],
+  ];
+
+  for (const [people, taskName] of fixtures) {
+    const uxia = people.find(person => person.id === 'uxia');
+    const task = uxia?.tasks.weekly.items.find(item => item.name === taskName);
+    assert.equal(task?.href, expectedHref, `${taskName} must open the active groceries sheet`);
+  }
+});
 
 test('replaces the generic volunteer with Uxía, Petra and Karen in every locale', () => {
   for (const [locale, source] of Object.entries(localeSources)) {
