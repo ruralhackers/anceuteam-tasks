@@ -36,7 +36,7 @@ export const people: Person[] = [
         total: 'Weekly total (sum per occurrence): 5h 50min',
         items: [
           { name: 'Run dishwasher after lunch (weekdays)', time: '10 min', when: 'Monday to Friday at 16:00' },
-          { name: 'Create dinner groups', time: '20 min', desc: "Create the week's dinner groups. Once a week", href: 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit' },
+          { name: 'Create dinner groups', time: '20 min', desc: 'Coordinate who joins each dinner and who cooks each day. Send the information to Agus on Slack; Agus updates the Colivers tab, the grocery calculations and Splitwise. You do not need to edit the spreadsheet or Splitwise.', href: 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit' },
           { name: 'Pick up groceries from Froiz', time: '60 min', when: 'Monday' },
           { name: 'Supplies count and coliving shopping list', time: '60 min', desc: 'Go to suministros.anceu.com and fill in the whole form to prepare the shopping list', when: 'Sunday afternoon', href: 'https://suministros.anceu.com' },
           { name: 'Write weekly coliving plans on whiteboard', time: '30 min', when: 'By Tuesday before 20:00' },

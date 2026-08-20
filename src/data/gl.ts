@@ -36,7 +36,7 @@ export const people: Person[] = [
         total: 'Total semanal (suma por ocorrencia): 5h 50min',
         items: [
           { name: 'Poñer lavalouza despois de comer (entre semana)', time: '10 min', when: 'Luns a venres ás 16:00' },
-          { name: 'Crear grupos de ceas', time: '20 min', desc: 'Crear os grupos de ceas para a semana. Unha vez á semana', href: 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit' },
+          { name: 'Crear grupos de ceas', time: '20 min', desc: 'Coordinar quen participa en cada cea e quen cociña cada día. Enviar a información a Agus por Slack; Agus actualiza a pestana Colivers, os cálculos de groceries e Splitwise. Non fai falta editar o Excel nin Splitwise.', href: 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit' },
           { name: 'Recoller groceries de Froiz', time: '60 min', when: 'Luns' },
           { name: 'Conteo de subministros e lista de compra coliving', time: '60 min', desc: 'Ir a suministros.anceu.com e encher todo o formulario para preparar a compra', when: 'Domingo pola tarde', href: 'https://suministros.anceu.com' },
           { name: 'Escribir na pizarra plans coliving da semana', time: '30 min', when: 'Ata martes antes das 20:00' },
