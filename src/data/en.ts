@@ -102,8 +102,10 @@ export const people: Person[] = [
     summary: 'Content, photography and onboarding support',
     tasks: {
       weekly: {
-        total: 'Weekly total (sum per occurrence): 7h 40min',
+        total: 'Weekly total (sum per occurrence): 8h',
         items: [
+          { name: 'Empty the dishwasher in the morning (weekdays)', time: '10 min', when: 'Monday to Friday at 9:00' },
+          { name: 'Take out the bins (weekdays)', time: '10 min', when: 'Monday to Friday throughout the day' },
           { name: 'Learn and support onboardings', time: '60 min', desc: 'Do the first onboardings with Petra to learn the process', href: '/en/onboarding' },
           { name: 'Instagram posts', time: '120 min', desc: 'Lead content: 1 post/week · 5 stories/week. Make sure photos are uploaded to the Google Photos album.' },
           { name: 'Write one weekly blog post', time: '120 min', desc: 'Write the draft in a Google Doc and send it to Agus and Afri for review.', when: 'Once a week' },

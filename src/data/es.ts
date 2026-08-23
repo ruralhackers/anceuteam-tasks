@@ -102,8 +102,10 @@ export const people: Person[] = [
     summary: 'Contenido, fotografía y apoyo en onboardings',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocurrencia): 7h 40min',
+        total: 'Total semanal (suma por ocurrencia): 8h',
         items: [
+          { name: 'Vaciar el lavavajillas por la mañana (entre semana)', time: '10 min', when: 'Lunes a viernes a las 9:00' },
+          { name: 'Llevar las basuras (entre semana)', time: '10 min', when: 'Lunes a viernes a lo largo del día' },
           { name: 'Aprender y apoyar los onboardings', time: '60 min', desc: 'Hacer los primeros onboardings junto con Petra para aprender el proceso', href: '/onboarding' },
           { name: 'Posts Instagram', time: '120 min', desc: 'Liderar el contenido: 1 post/semana · 5 stories/semana. Comprobar que las fotos se suban al álbum de Google Photos.' },
           { name: 'Escribir un post semanal para el blog', time: '120 min', desc: 'Escribir el borrador en un Google Doc y mandárselo a Agus y Afri para que lo revisen.', when: 'Una vez por semana' },
