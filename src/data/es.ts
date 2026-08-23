@@ -33,9 +33,11 @@ export const people: Person[] = [
     summary: 'Operativa · Guardias de lunes a viernes',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocurrencia): 5h 50min',
+        total: 'Total semanal (suma por ocurrencia): 6h 10min',
         items: [
+          { name: 'Vaciar el lavavajillas por la mañana (entre semana)', time: '10 min', when: 'Lunes a viernes a las 9:00' },
           { name: 'Poner lavavajillas después de comer (entre semana)', time: '10 min', when: 'Lunes a viernes a las 16:00' },
+          { name: 'Llevar las basuras (entre semana)', time: '10 min', when: 'Lunes a viernes a lo largo del día' },
           { name: 'Crear grupos de cenas', time: '20 min', desc: 'Crear los grupos de cenas para la semana. Una vez a la semana', href: 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit' },
           { name: 'Recoger groceries de Froiz', time: '60 min', when: 'Lunes' },
           { name: 'Conteo de suministros y lista de compra coliving', time: '60 min', desc: 'Ir a suministros.anceu.com y rellenar todo el formulario para preparar la compra', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },

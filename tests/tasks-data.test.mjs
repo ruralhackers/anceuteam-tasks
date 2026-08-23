@@ -83,6 +83,43 @@ test('assigns the agreed Spanish responsibilities to each person', () => {
   }
 });
 
+test('assigns Uxía the weekday dishwasher and bins duties in every locale', () => {
+  const expected = {
+    es: {
+      dishwasher: 'Vaciar el lavavajillas por la mañana (entre semana)',
+      dishwasherWhen: 'Lunes a viernes a las 9:00',
+      bins: 'Llevar las basuras (entre semana)',
+      binsWhen: 'Lunes a viernes a lo largo del día',
+      total: 'Total semanal (suma por ocurrencia): 6h 10min',
+    },
+    en: {
+      dishwasher: 'Empty the dishwasher in the morning (weekdays)',
+      dishwasherWhen: 'Monday to Friday at 9:00',
+      bins: 'Take out the bins (weekdays)',
+      binsWhen: 'Monday to Friday throughout the day',
+      total: 'Weekly total (sum per occurrence): 6h 10min',
+    },
+    gl: {
+      dishwasher: 'Baleirar o lavalouza pola mañá (entre semana)',
+      dishwasherWhen: 'Luns a venres ás 9:00',
+      bins: 'Levar o lixo (entre semana)',
+      binsWhen: 'Luns a venres ao longo do día',
+      total: 'Total semanal (suma por ocorrencia): 6h 10min',
+    },
+  };
+
+  const peopleByLocale = { es: peopleEs, en: peopleEn, gl: peopleGl };
+  for (const [locale, people] of Object.entries(peopleByLocale)) {
+    const uxia = people.find(person => person.id === 'uxia');
+    const dishwasher = uxia?.tasks.weekly.items.find(item => item.name === expected[locale].dishwasher);
+    const bins = uxia?.tasks.weekly.items.find(item => item.name === expected[locale].bins);
+
+    assert.equal(dishwasher?.when, expected[locale].dishwasherWhen);
+    assert.equal(bins?.when, expected[locale].binsWhen);
+    assert.equal(uxia?.tasks.weekly.total, expected[locale].total);
+  }
+});
+
 test('adds arrival shelf cleaning and daily visual interior checks in all languages', () => {
   assert.match(localeSources.es, /Preparar balda de nevera y espacio de comida seca para una llegada/);
   assert.match(localeSources.es, /habitación 105.*balda.*105.*espacio 105.*comida seca/is);
