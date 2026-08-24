@@ -36,6 +36,24 @@ test('links the dinner-groups task to the active groceries sheet in every locale
   }
 });
 
+test('gives Uxía two linked Sunday whiteboard tasks in every locale', () => {
+  const expectedHref = 'https://suministros.anceu.com';
+  const fixtures = [
+    [peopleEs, ['Enviar foto de la pizarra de bebidas', 'Enviar foto de la pizarra de lavandería'], 'Domingo por la tarde'],
+    [peopleEn, ['Send beverage whiteboard photo', 'Send laundry whiteboard photo'], 'Sunday afternoon'],
+    [peopleGl, ['Enviar foto da pizarra de bebidas', 'Enviar foto da pizarra da lavandería'], 'Domingo pola tarde'],
+  ];
+
+  for (const [people, taskNames, when] of fixtures) {
+    const uxia = people.find(person => person.id === 'uxia');
+    for (const taskName of taskNames) {
+      const task = uxia?.tasks.weekly.items.find(item => item.name === taskName);
+      assert.equal(task?.href, expectedHref, `${taskName} must open the task app`);
+      assert.equal(task?.when, when, `${taskName} must be scheduled on Sunday afternoon`);
+    }
+  }
+});
+
 test('replaces the generic volunteer with Uxía, Petra and Karen in every locale', () => {
   for (const [locale, source] of Object.entries(localeSources)) {
     assert.doesNotMatch(source, /id: 'volunteers'/, `${locale} still has generic volunteers`);

@@ -41,6 +41,8 @@ export const people: Person[] = [
           { name: 'Crear grupos de cenas', time: '20 min', desc: 'Crear los grupos de cenas para la semana. Una vez a la semana', href: 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit' },
           { name: 'Recoger groceries de Froiz', time: '60 min', when: 'Lunes' },
           { name: 'Conteo de suministros y lista de compra coliving', time: '60 min', desc: 'Ir a suministros.anceu.com y rellenar todo el formulario para preparar la compra', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
+          { name: 'Enviar foto de la pizarra de bebidas', time: '5 min', desc: 'Hacer una foto legible, borrar la pizarra y enviarla desde la app de suministros.', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
+          { name: 'Enviar foto de la pizarra de lavandería', time: '5 min', desc: 'Hacer una foto legible, borrar la pizarra y enviarla desde la app de suministros.', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
           { name: 'Escribir en pizarra planes coliving de la semana', time: '30 min', when: 'Hasta martes antes de las 20:00' },
           { name: 'Vaciar deshumidificador laundry (tarde)', time: '5 min', when: 'Lunes a viernes a las 16:00' },
           { name: 'Vaciar deshumidificador laundry (noche)', time: '5 min', when: 'Lunes a viernes a las 22:00' },
