@@ -21,22 +21,17 @@ function personBlock(source, id) {
   return source.slice(start, next === -1 ? source.indexOf('\n];', start) : next);
 }
 
-test('links the dinner-groups task to the active groceries sheet in every locale', () => {
-  const expectedHref = 'https://docs.google.com/spreadsheets/d/10UqAY6viSQRJCRfWLWxSIlObrsQHH5AyaVLpmm9fseo/edit';
-  const fixtures = [
-    [peopleEs, 'Crear grupos de cenas'],
-    [peopleEn, 'Create dinner groups'],
-    [peopleGl, 'Crear grupos de ceas'],
-  ];
-
-  for (const [people, taskName] of fixtures) {
+test('marks Uxía away with empty weekly ops in every locale', () => {
+  const peopleByLocale = { es: peopleEs, en: peopleEn, gl: peopleGl };
+  for (const [locale, people] of Object.entries(peopleByLocale)) {
     const uxia = people.find(person => person.id === 'uxia');
-    const task = uxia?.tasks.weekly.items.find(item => item.name === taskName);
-    assert.equal(task?.href, expectedHref, `${taskName} must open the active groceries sheet`);
+    assert.equal(uxia?.tasks.weekly.items.length, 0, `${locale} Uxía should have no weekly items`);
+    assert.equal(uxia?.tasks.situational.items.length, 0, `${locale} Uxía should have no situational items`);
+    assert.match(uxia?.summary ?? '', /ausente|away/i);
   }
 });
 
-test('gives Uxía two linked Sunday whiteboard tasks in every locale', () => {
+test('gives Petra two linked Sunday whiteboard tasks in every locale', () => {
   const expectedHref = 'https://suministros.anceu.com';
   const fixtures = [
     [peopleEs, ['Enviar foto de la pizarra de bebidas', 'Enviar foto de la pizarra de lavandería'], 'Domingo por la tarde'],
@@ -45,9 +40,9 @@ test('gives Uxía two linked Sunday whiteboard tasks in every locale', () => {
   ];
 
   for (const [people, taskNames, when] of fixtures) {
-    const uxia = people.find(person => person.id === 'uxia');
+    const petra = people.find(person => person.id === 'petra');
     for (const taskName of taskNames) {
-      const task = uxia?.tasks.weekly.items.find(item => item.name === taskName);
+      const task = petra?.tasks.weekly.items.find(item => item.name === taskName);
       assert.equal(task?.href, expectedHref, `${taskName} must open the task app`);
       assert.equal(task?.when, when, `${taskName} must be scheduled on Sunday afternoon`);
     }
@@ -63,22 +58,21 @@ test('replaces the generic volunteer with Uxía, Petra and Karen in every locale
   }
 });
 
-test('assigns the agreed Spanish responsibilities to each person', () => {
+test('assigns the agreed Spanish responsibilities after Uxía redistribution', () => {
   const source = localeSources.es;
   const uxia = personBlock(source, 'uxia');
   const petra = personBlock(source, 'petra');
   const karen = personBlock(source, 'karen');
 
-  for (const task of [
-    'Conteo de suministros y lista de compra coliving',
-    'Crear grupos de cenas',
-    'Recoger groceries de Froiz',
-    'Conteo de suministros',
-    'Check espacios exteriores (entre semana)',
-    'Revisión y orden de espacios interiores (entre semana)',
-  ]) assert.ok(uxia.includes(task), `Uxía is missing ${task}`);
+  assert.match(uxia, /Ausente/);
+  assert.doesNotMatch(uxia, /Crear grupos de cenas/);
+  assert.doesNotMatch(uxia, /Recoger groceries de Froiz/);
 
   for (const task of [
+    'Conteo de suministros y lista de compra coliving',
+    'Llevar las basuras (entre semana)',
+    'Check espacios exteriores (entre semana)',
+    'Revisión y orden de espacios interiores (entre semana)',
     'Onboarding',
     'Gestionar / organizar talleres en el coliving',
     'Mandar por Slack planes coliving de la semana',
@@ -93,85 +87,90 @@ test('assigns the agreed Spanish responsibilities to each person', () => {
     'Escribir un post semanal para el blog',
     'Fotografiar todos los espacios de Anceu',
     'Aprender y apoyar los onboardings',
+    'Recoger groceries de Froiz',
+    'Poner lavavajillas después de comer (entre semana)',
+    'Poner lavavajillas por la noche (entre semana)',
   ]) assert.ok(karen.includes(task), `Karen is missing ${task}`);
 
-  for (const block of [uxia, petra, karen]) {
+  for (const block of [petra, karen]) {
     assert.match(block, /Actividades de community building \(rotación\)/);
     assert.match(block, /Reunión semanal con el equipo/);
   }
 });
 
-test('assigns Uxía the weekday dishwasher and bins duties in every locale', () => {
+test('assigns Petra the weekday morning dishwasher and bins duties in every locale', () => {
   const expected = {
     es: {
       dishwasher: 'Vaciar el lavavajillas por la mañana (entre semana)',
       dishwasherWhen: 'Lunes a viernes a las 9:00',
       bins: 'Llevar las basuras (entre semana)',
       binsWhen: 'Lunes a viernes a lo largo del día',
-      total: 'Total semanal (suma por ocurrencia): 6h 10min',
+      total: 'Total semanal (suma por ocurrencia): 10h 30min',
     },
     en: {
       dishwasher: 'Empty the dishwasher in the morning (weekdays)',
       dishwasherWhen: 'Monday to Friday at 9:00',
       bins: 'Take out the bins (weekdays)',
       binsWhen: 'Monday to Friday throughout the day',
-      total: 'Weekly total (sum per occurrence): 6h 10min',
+      total: 'Weekly total (sum per occurrence): 10h 30min',
     },
     gl: {
       dishwasher: 'Baleirar o lavalouza pola mañá (entre semana)',
       dishwasherWhen: 'Luns a venres ás 9:00',
       bins: 'Levar o lixo (entre semana)',
       binsWhen: 'Luns a venres ao longo do día',
-      total: 'Total semanal (suma por ocorrencia): 6h 10min',
+      total: 'Total semanal (suma por ocorrencia): 10h 30min',
     },
   };
 
   const peopleByLocale = { es: peopleEs, en: peopleEn, gl: peopleGl };
   for (const [locale, people] of Object.entries(peopleByLocale)) {
-    const uxia = people.find(person => person.id === 'uxia');
-    const dishwasher = uxia?.tasks.weekly.items.find(item => item.name === expected[locale].dishwasher);
-    const bins = uxia?.tasks.weekly.items.find(item => item.name === expected[locale].bins);
+    const petra = people.find(person => person.id === 'petra');
+    const dishwasher = petra?.tasks.weekly.items.find(item => item.name === expected[locale].dishwasher);
+    const bins = petra?.tasks.weekly.items.find(item => item.name === expected[locale].bins);
 
     assert.equal(dishwasher?.when, expected[locale].dishwasherWhen);
     assert.equal(bins?.when, expected[locale].binsWhen);
-    assert.equal(uxia?.tasks.weekly.total, expected[locale].total);
+    assert.equal(petra?.tasks.weekly.total, expected[locale].total);
   }
 });
 
-test('assigns Karen the weekday dishwasher and bins duties in every locale', () => {
+test('assigns Karen afternoon/night dishwasher and dehumidifier duties in every locale', () => {
   const expected = {
     es: {
-      dishwasher: 'Vaciar el lavavajillas por la mañana (entre semana)',
-      dishwasherWhen: 'Lunes a viernes a las 9:00',
-      bins: 'Llevar las basuras (entre semana)',
-      binsWhen: 'Lunes a viernes a lo largo del día',
-      total: 'Total semanal (suma por ocurrencia): 8h',
+      afternoon: 'Poner lavavajillas después de comer (entre semana)',
+      afternoonWhen: 'Lunes a viernes a las 16:00',
+      night: 'Poner lavavajillas por la noche (entre semana)',
+      nightWhen: 'Lunes a viernes a las 22:00',
+      total: 'Total semanal (suma por ocurrencia): 9h 20min',
     },
     en: {
-      dishwasher: 'Empty the dishwasher in the morning (weekdays)',
-      dishwasherWhen: 'Monday to Friday at 9:00',
-      bins: 'Take out the bins (weekdays)',
-      binsWhen: 'Monday to Friday throughout the day',
-      total: 'Weekly total (sum per occurrence): 8h',
+      afternoon: 'Run dishwasher after lunch (weekdays)',
+      afternoonWhen: 'Monday to Friday at 16:00',
+      night: 'Run dishwasher at night (weekdays)',
+      nightWhen: 'Monday to Friday at 22:00',
+      total: 'Weekly total (sum per occurrence): 9h 20min',
     },
     gl: {
-      dishwasher: 'Baleirar o lavalouza pola mañá (entre semana)',
-      dishwasherWhen: 'Luns a venres ás 9:00',
-      bins: 'Levar o lixo (entre semana)',
-      binsWhen: 'Luns a venres ao longo do día',
-      total: 'Total semanal (suma por ocorrencia): 8h',
+      afternoon: 'Poñer lavalouza despois de comer (entre semana)',
+      afternoonWhen: 'Luns a venres ás 16:00',
+      night: 'Poñer lavalouza pola noite (entre semana)',
+      nightWhen: 'Luns a venres ás 22:00',
+      total: 'Total semanal (suma por ocorrencia): 9h 20min',
     },
   };
 
   const peopleByLocale = { es: peopleEs, en: peopleEn, gl: peopleGl };
   for (const [locale, people] of Object.entries(peopleByLocale)) {
     const karen = people.find(person => person.id === 'karen');
-    const dishwasher = karen?.tasks.weekly.items.find(item => item.name === expected[locale].dishwasher);
-    const bins = karen?.tasks.weekly.items.find(item => item.name === expected[locale].bins);
+    const afternoon = karen?.tasks.weekly.items.find(item => item.name === expected[locale].afternoon);
+    const night = karen?.tasks.weekly.items.find(item => item.name === expected[locale].night);
 
-    assert.equal(dishwasher?.when, expected[locale].dishwasherWhen);
-    assert.equal(bins?.when, expected[locale].binsWhen);
+    assert.equal(afternoon?.when, expected[locale].afternoonWhen);
+    assert.equal(night?.when, expected[locale].nightWhen);
     assert.equal(karen?.tasks.weekly.total, expected[locale].total);
+    assert.ok(!karen?.tasks.weekly.items.some(item => /mañana|morning|mañá/i.test(item.name) && /lavavajillas|dishwasher|lavalouza/i.test(item.name)));
+    assert.ok(!karen?.tasks.weekly.items.some(item => /basuras|bins|lixo/i.test(item.name)));
   }
 });
 
@@ -185,6 +184,9 @@ test('adds arrival shelf cleaning and daily visual interior checks in all langua
 
   assert.match(localeSources.gl, /Preparar balda de neveira e espazo de comida seca para unha chegada/);
   assert.match(localeSources.gl, /coxíns.*Chill House.*tazas.*roupa.*obxectos/is);
+
+  const petraEs = personBlock(localeSources.es, 'petra');
+  assert.match(petraEs, /Preparar balda de nevera y espacio de comida seca para una llegada/);
 });
 
 test('uses the new morning kitchen checklist on weekdays and weekends in all languages', () => {
@@ -253,9 +255,9 @@ test('applies the revised groceries, blog and whiteboard ownership', () => {
   const karenEs = personBlock(localeSources.es, 'karen');
 
   assert.doesNotMatch(uxiaEs, /name: 'Lista compra coliving'/);
-  assert.match(uxiaEs, /Conteo de suministros y lista de compra coliving/);
-  assert.match(uxiaEs, /Recoger groceries de Froiz'.*when: 'Lunes'/);
-  assert.match(uxiaEs, /Escribir en pizarra planes coliving de la semana/);
+  assert.match(petraEs, /Conteo de suministros y lista de compra coliving/);
+  assert.match(karenEs, /Recoger groceries de Froiz'.*when: 'Lunes'/);
+  assert.match(petraEs, /Escribir en pizarra planes coliving de la semana/);
   assert.doesNotMatch(karenEs, /Escribir en pizarra planes coliving de la semana/);
 
   assert.match(karenEs, /Escribir un post semanal para el blog/);
@@ -269,7 +271,7 @@ test('applies the revised groceries, blog and whiteboard ownership', () => {
   }
 });
 
-test('makes package collection a shared situational task for all three', () => {
+test('makes package collection a shared situational task for Petra and Karen', () => {
   for (const [locale, taskName] of Object.entries({
     es: 'Recogida de paquetes (tarea compartida)',
     en: 'Package collection (shared task)',
@@ -278,11 +280,16 @@ test('makes package collection a shared situational task for all three', () => {
     const source = localeSources[locale];
     assert.doesNotMatch(source, /Package collection \(weekdays\)|Package collection \(weekend\)|Recogida de paquetes \(entre semana\)|Recogida de paquetes \(fin de semana\)|Recollida de paquetes \(entre semana\)|Recollida de paquetes \(fin de semana\)/);
 
-    for (const id of ['uxia', 'petra', 'karen']) {
+    const uxia = personBlock(source, 'uxia');
+    assert.doesNotMatch(uxia, new RegExp(taskName.replace(/[()]/g, '\\$&')));
+
+    for (const id of ['petra', 'karen']) {
       const block = personBlock(source, id);
       const situational = block.slice(block.indexOf('situational:'));
       assert.ok(situational.includes(taskName), `${locale}/${id} is missing the shared package task`);
       assert.match(situational, /1h\/week shared|1h\/semana compartida|1h\/sem compartida/);
+      assert.match(situational, /Petra y Karen|Petra and Karen|Petra e Karen/);
+      assert.doesNotMatch(situational, /Uxía, Petra y Karen|Uxía, Petra and Karen|Uxía, Petra e Karen/);
     }
   }
 });
