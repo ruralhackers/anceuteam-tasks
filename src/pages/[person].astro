@@ -5,13 +5,7 @@ import TaskItem from '../components/TaskItem.astro';
 import { ui, people } from '../data/es';
 
 export function getStaticPaths() {
-  return [
-    { params: { person: 'uxia' } },
-    { params: { person: 'petra' } },
-    { params: { person: 'karen' } },
-    { params: { person: 'se' } },
-    { params: { person: 'rosabel' } },
-  ];
+  return people.map(p => ({ params: { person: p.id } }));
 }
 
 const { person: personId } = Astro.params;

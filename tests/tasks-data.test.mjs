@@ -21,13 +21,14 @@ function personBlock(source, id) {
   return source.slice(start, next === -1 ? source.indexOf('\n];', start) : next);
 }
 
-test('marks Uxía away with empty weekly ops in every locale', () => {
+test('removes Uxía from the people list in every locale', () => {
   const peopleByLocale = { es: peopleEs, en: peopleEn, gl: peopleGl };
   for (const [locale, people] of Object.entries(peopleByLocale)) {
-    const uxia = people.find(person => person.id === 'uxia');
-    assert.equal(uxia?.tasks.weekly.items.length, 0, `${locale} Uxía should have no weekly items`);
-    assert.equal(uxia?.tasks.situational.items.length, 0, `${locale} Uxía should have no situational items`);
-    assert.match(uxia?.summary ?? '', /ausente|away/i);
+    assert.equal(people.find(person => person.id === 'uxia'), undefined, `${locale} still lists Uxía`);
+    assert.doesNotMatch(localeSources[locale], /id: 'uxia'|person: 'uxia'|Uxía/);
+    for (const id of ['petra', 'karen', 'se', 'rosabel']) {
+      assert.ok(people.some(person => person.id === id), `${locale} is missing ${id}`);
+    }
   }
 });
 
@@ -49,10 +50,11 @@ test('gives Petra two linked Sunday whiteboard tasks in every locale', () => {
   }
 });
 
-test('replaces the generic volunteer with Uxía, Petra and Karen in every locale', () => {
+test('replaces the generic volunteer with Petra and Karen in every locale', () => {
   for (const [locale, source] of Object.entries(localeSources)) {
     assert.doesNotMatch(source, /id: 'volunteers'/, `${locale} still has generic volunteers`);
-    for (const id of ['uxia', 'petra', 'karen']) {
+    assert.doesNotMatch(source, /id: 'uxia'/, `${locale} still lists Uxía`);
+    for (const id of ['petra', 'karen']) {
       assert.match(source, new RegExp(`id: '${id}'`), `${locale} is missing ${id}`);
     }
   }
@@ -60,13 +62,10 @@ test('replaces the generic volunteer with Uxía, Petra and Karen in every locale
 
 test('assigns the agreed Spanish responsibilities after Uxía redistribution', () => {
   const source = localeSources.es;
-  const uxia = personBlock(source, 'uxia');
   const petra = personBlock(source, 'petra');
   const karen = personBlock(source, 'karen');
 
-  assert.match(uxia, /Ausente/);
-  assert.doesNotMatch(uxia, /Crear grupos de cenas/);
-  assert.doesNotMatch(uxia, /Recoger groceries de Froiz/);
+  assert.doesNotMatch(source, /Crear grupos de cenas/);
 
   for (const task of [
     'Conteo de suministros y lista de compra coliving',
@@ -201,7 +200,7 @@ test('uses the new morning kitchen checklist on weekdays and weekends in all lan
   }
 });
 
-test('generates person routes and opening checklists for the three named volunteers', () => {
+test('generates person routes and opening checklists for Petra and Karen', () => {
   for (const page of [
     'src/pages/[person].astro',
     'src/pages/en/[person].astro',
@@ -209,12 +208,14 @@ test('generates person routes and opening checklists for the three named volunte
   ]) {
     const source = read(page);
     assert.doesNotMatch(source, /person: 'volunteers'/);
-    for (const id of ['uxia', 'petra', 'karen']) assert.match(source, new RegExp(`person: '${id}'`));
+    assert.doesNotMatch(source, /person: 'uxia'/);
+    assert.match(source, /people\.map\(p => \(\{ params: \{ person: p\.id \} \}\)\)/);
   }
 
   for (const source of Object.values(localeSources)) {
     assert.doesNotMatch(source, /person: 'volunteers'/);
-    for (const id of ['uxia', 'petra', 'karen']) assert.match(source, new RegExp(`person: '${id}'`));
+    assert.doesNotMatch(source, /person: 'uxia'/);
+    for (const id of ['petra', 'karen']) assert.match(source, new RegExp(`person: '${id}'`));
   }
 });
 
@@ -250,11 +251,10 @@ test('limits the house meeting and adds Petra’s pre-meeting Slack reminder', (
 });
 
 test('applies the revised groceries, blog and whiteboard ownership', () => {
-  const uxiaEs = personBlock(localeSources.es, 'uxia');
   const petraEs = personBlock(localeSources.es, 'petra');
   const karenEs = personBlock(localeSources.es, 'karen');
 
-  assert.doesNotMatch(uxiaEs, /name: 'Lista compra coliving'/);
+  assert.doesNotMatch(localeSources.es, /name: 'Lista compra coliving'/);
   assert.match(petraEs, /Conteo de suministros y lista de compra coliving/);
   assert.match(karenEs, /Recoger groceries de Froiz'.*when: 'Lunes'/);
   assert.match(petraEs, /Escribir en pizarra planes coliving de la semana/);
@@ -263,7 +263,6 @@ test('applies the revised groceries, blog and whiteboard ownership', () => {
   assert.match(karenEs, /Escribir un post semanal para el blog/);
   assert.match(karenEs, /Google Doc.*Agus y Afri/is);
 
-  assert.doesNotMatch(uxiaEs, /Ser persona de referencia/);
   assert.doesNotMatch(petraEs, /Ser persona de referencia/);
 
   for (const source of Object.values(localeSources)) {
@@ -280,9 +279,6 @@ test('makes package collection a shared situational task for Petra and Karen', (
     const source = localeSources[locale];
     assert.doesNotMatch(source, /Package collection \(weekdays\)|Package collection \(weekend\)|Recogida de paquetes \(entre semana\)|Recogida de paquetes \(fin de semana\)|Recollida de paquetes \(entre semana\)|Recollida de paquetes \(fin de semana\)/);
 
-    const uxia = personBlock(source, 'uxia');
-    assert.doesNotMatch(uxia, new RegExp(taskName.replace(/[()]/g, '\\$&')));
-
     for (const id of ['petra', 'karen']) {
       const block = personBlock(source, id);
       const situational = block.slice(block.indexOf('situational:'));
@@ -291,5 +287,14 @@ test('makes package collection a shared situational task for Petra and Karen', (
       assert.match(situational, /Petra y Karen|Petra and Karen|Petra e Karen/);
       assert.doesNotMatch(situational, /Uxía, Petra y Karen|Uxía, Petra and Karen|Uxía, Petra e Karen/);
     }
+  }
+});
+
+test('community building rotation names only Petra and Karen', () => {
+  assert.match(localeSources.es, /Petra y Karen rotan la facilitación/);
+  assert.match(localeSources.en, /Petra and Karen rotate facilitation/);
+  assert.match(localeSources.gl, /Petra e Karen rotan a facilitación/);
+  for (const source of Object.values(localeSources)) {
+    assert.doesNotMatch(source, /Uxía, Petra/);
   }
 });

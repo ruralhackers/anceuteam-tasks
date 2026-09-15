@@ -26,25 +26,6 @@ export const ui: UI = {
 
 export const people: Person[] = [
   {
-    id: 'uxia',
-    name: 'Uxía',
-    initial: 'U',
-    color: 'uxia',
-    summary: 'Ausente · Operativa entre semana redistribuída a Petra e Karen. Os grupos de ceas xestiónanse fóra deste roster por agora.',
-    tasks: {
-      weekly: {
-        total: 'Total semanal: — (ausente; operativa redistribuída a Petra e Karen)',
-        items: [],
-      },
-      biweekly: { total: '', items: [] },
-      monthly: { total: '', items: [] },
-      situational: {
-        total: '',
-        items: [],
-      },
-    },
-  },
-  {
     id: 'petra',
     name: 'Petra',
     initial: 'P',
@@ -71,7 +52,7 @@ export const people: Person[] = [
           { name: 'Revisión e orde de espazos interiores (entre semana)', time: '30 min', desc: 'Comprobar que non haxa cousas tiradas, que os coxíns estean ordenados nos sofás, que a Chill House estea ordenada e que non haxa tazas, roupa ou obxectos esquecidos nas zonas comúns. Deixar os espazos visualmente ordenados.', when: 'Luns a venres antes das 10:00' },
           { name: 'Revisión e orde de espazos interiores (fin de semana)', time: '30 min', desc: 'Comprobar que non haxa cousas tiradas, que os coxíns estean ordenados nos sofás, que a Chill House estea ordenada e que non haxa tazas, roupa ou obxectos esquecidos nas zonas comúns. Deixar os espazos visualmente ordenados.', when: 'Sábado e domingo antes das 10:00' },
           { name: 'House meeting', time: '15 min', desc: 'Preparar e facilitar a family meeting semanal. Non debe durar máis de 15 minutos.', when: 'Luns ás 21:00' },
-          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Uxía, Petra e Karen rotan a facilitación.' },
+          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Petra e Karen rotan a facilitación.' },
           { name: 'Reunión semanal co equipo', time: '60 min', desc: 'Reu con Agus e Afri para planear a semana. Luns ás 17:00' },
         ],
       },
@@ -105,7 +86,7 @@ export const people: Person[] = [
           { name: 'Posts Instagram', time: '120 min', desc: 'Liderar o contido: 1 post/semana · 5 stories/semana. Comprobar que as fotos se suban ao álbum de Google Photos.' },
           { name: 'Escribir un post semanal para o blog', time: '120 min', desc: 'Escribir o borrador nun Google Doc e mandárllelo a Agus e Afri para que o revisen.', when: 'Unha vez por semana' },
           { name: 'Anceu Inn (xestión fotos)', time: '10 min', desc: 'Poñer/quitar fotos cando chegan/marchan coliver/as. Dúas veces por semana (de media)' },
-          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Uxía, Petra e Karen rotan a facilitación.' },
+          { name: 'Actividades de community building (rotación)', time: '90 min', desc: 'Unha actividade entre semana e outra a fin de semana. Petra e Karen rotan a facilitación.' },
           { name: 'Reunión semanal co equipo', time: '60 min', desc: 'Reu con Agus e Afri para planear a semana. Luns ás 17:00' },
         ],
       },
@@ -191,19 +172,12 @@ export const preseason: ChecklistPage = {
   subtitle: 'Checklist para preparar a reapertura do coliving. Marca cada tarefa cando estea lista.',
   groups: [
     {
-      person: 'uxia',
-      label: 'Uxía',
+      person: 'petra',
+      label: 'Petra',
       items: [
         { task: 'Facer conteo de subministros de apertura', href: 'https://suministros.anceu.com' },
         { task: 'Revisar armarios de comida das coliver/as', note: 'Que estean limpos' },
         { task: 'Revisar baldas de neveiras das coliver/as', note: 'Que estean limpas' },
-        { task: 'Planificar grupos de ceas da primeira semana' },
-      ],
-    },
-    {
-      person: 'petra',
-      label: 'Petra',
-      items: [
         { task: 'Comprobar que o link de invitación de Slack non caducou', href: 'https://join.slack.com/t/anceu/shared_invite/zt-jryrz9dd-WcNbXUaBFdP7niKIJ5EM9A' },
         { task: 'Verificar que existe o canal #da-haus en Slack' },
         { task: 'Programar a primeira house meeting' },

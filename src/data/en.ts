@@ -26,25 +26,6 @@ export const ui: UI = {
 
 export const people: Person[] = [
   {
-    id: 'uxia',
-    name: 'Uxía',
-    initial: 'U',
-    color: 'uxia',
-    summary: 'Away · Weekday operations redistributed to Petra and Karen. Dinner groups are handled outside this roster for now.',
-    tasks: {
-      weekly: {
-        total: 'Weekly total: — (away; operations redistributed to Petra and Karen)',
-        items: [],
-      },
-      biweekly: { total: '', items: [] },
-      monthly: { total: '', items: [] },
-      situational: {
-        total: '',
-        items: [],
-      },
-    },
-  },
-  {
     id: 'petra',
     name: 'Petra',
     initial: 'P',
@@ -71,7 +52,7 @@ export const people: Person[] = [
           { name: 'Check and tidy indoor spaces (weekdays)', time: '30 min', desc: 'Check that nothing is left lying around, sofa cushions are arranged, the Chill House is tidy, and there are no forgotten cups, clothes or objects in common areas. Leave the spaces visually tidy.', when: 'Monday to Friday before 10:00' },
           { name: 'Check and tidy indoor spaces (weekend)', time: '30 min', desc: 'Check that nothing is left lying around, sofa cushions are arranged, the Chill House is tidy, and there are no forgotten cups, clothes or objects in common areas. Leave the spaces visually tidy.', when: 'Saturday and Sunday before 10:00' },
           { name: 'House meeting', time: '15 min', desc: 'Prepare and facilitate the weekly family meeting. It must not last more than 15 minutes.', when: 'Monday at 21:00' },
-          { name: 'Community building activities (rotation)', time: '90 min', desc: 'One weekday activity and one weekend activity. Uxía, Petra and Karen rotate facilitation.' },
+          { name: 'Community building activities (rotation)', time: '90 min', desc: 'One weekday activity and one weekend activity. Petra and Karen rotate facilitation.' },
           { name: 'Weekly team meeting', time: '60 min', desc: 'Meeting with Agus and Afri to plan the week. Monday at 17:00' },
         ],
       },
@@ -105,7 +86,7 @@ export const people: Person[] = [
           { name: 'Instagram posts', time: '120 min', desc: 'Lead content: 1 post/week · 5 stories/week. Make sure photos are uploaded to the Google Photos album.' },
           { name: 'Write one weekly blog post', time: '120 min', desc: 'Write the draft in a Google Doc and send it to Agus and Afri for review.', when: 'Once a week' },
           { name: 'Anceu Inn (photo management)', time: '10 min', desc: 'Add/remove photos when colivers arrive/leave. Twice a week (on average)' },
-          { name: 'Community building activities (rotation)', time: '90 min', desc: 'One weekday activity and one weekend activity. Uxía, Petra and Karen rotate facilitation.' },
+          { name: 'Community building activities (rotation)', time: '90 min', desc: 'One weekday activity and one weekend activity. Petra and Karen rotate facilitation.' },
           { name: 'Weekly team meeting', time: '60 min', desc: 'Meeting with Agus and Afri to plan the week. Monday at 17:00' },
         ],
       },
@@ -191,19 +172,12 @@ export const preseason: ChecklistPage = {
   subtitle: 'Checklist to prepare the coliving reopening. Tick each task when done.',
   groups: [
     {
-      person: 'uxia',
-      label: 'Uxía',
+      person: 'petra',
+      label: 'Petra',
       items: [
         { task: 'Do opening supplies count', href: 'https://suministros.anceu.com' },
         { task: 'Check coliver food cupboards', note: 'Make sure they are clean' },
         { task: 'Check coliver fridge shelves', note: 'Make sure they are clean' },
-        { task: 'Plan dinner groups for the first week' },
-      ],
-    },
-    {
-      person: 'petra',
-      label: 'Petra',
-      items: [
         { task: 'Check that the Slack invitation link has not expired', href: 'https://join.slack.com/t/anceu/shared_invite/zt-jryrz9dd-WcNbXUaBFdP7niKIJ5EM9A' },
         { task: 'Verify that the #da-haus channel exists on Slack' },
         { task: 'Schedule the first house meeting' },
