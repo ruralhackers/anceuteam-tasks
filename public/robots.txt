@@ -1,2 +1,5 @@
+# TEMPORARY: crawling is allowed so Google can fetch pages and see the
+# X-Robots-Tag / meta robots noindex and drop them from its index.
+# Once Search Console shows 0 indexed URLs, this can go back to Disallow: /
 User-agent: *
-Disallow: /
+Allow: /
