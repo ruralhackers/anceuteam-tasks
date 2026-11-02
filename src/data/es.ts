@@ -33,11 +33,13 @@ export const people: Person[] = [
     summary: 'Comunidad, onboardings y operativa entre semana · Guardias de fin de semana',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocurrencia): 10h 30min',
+        total: 'Total semanal (suma por ocurrencia): 10h 50min',
         items: [
           { name: 'Vaciar el lavavajillas por la mañana (entre semana)', time: '15 min', desc: 'Vaciar el lavavajillas y limpiar la cocina (fregaderos y basura).', when: 'Lunes a viernes a las 9:00' },
           { name: 'Llevar las basuras (entre semana)', time: '10 min', when: 'Lunes a viernes a lo largo del día' },
           { name: 'Tareas de cocina de mañana (fin de semana)', time: '60 min', desc: 'Vaciar el lavavajillas, tirar las basuras, tirar la comida que esté mala en las neveras y llevar las tazas a la cafetería.', when: 'Sábado y domingo antes de las 10:00' },
+          { name: 'Etiquetar lo abierto en las neveras', time: '5 min × 2 = 10 min/sem', desc: 'Poner la fecha de apertura en la leche, los yogures, las salsas y cualquier cosa abierta en las neveras que no tenga etiqueta. Así todo el mundo sabe cuándo se abrió y se tira menos comida.', when: 'Sábado y domingo antes de las 10:00' },
+          { name: 'Subir cucharillas a la cafetería', time: '5 min × 2 = 10 min/sem', desc: 'Comprobar que haya cucharillas limpias en la cafetería y, si faltan, subirlas desde la cocina.', when: 'Sábado y domingo antes de las 10:00' },
           { name: 'Poner lavavajillas después de comer (fin de semana)', time: '10 min', when: 'Sábado y domingo a las 16:00' },
           { name: 'Conteo de suministros y lista de compra coliving', time: '60 min', desc: 'Ir a suministros.anceu.com y rellenar todo el formulario para preparar la compra', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
           { name: 'Enviar foto de la pizarra de bebidas', time: '5 min', desc: 'Hacer una foto legible, borrar la pizarra y enviarla desde la app de suministros.', when: 'Domingo por la tarde', href: 'https://suministros.anceu.com' },
@@ -106,12 +108,14 @@ export const people: Person[] = [
     name: 'Se',
     initial: 'S',
     color: 'se',
-    summary: 'Semanal 12h 30min · Quincenal 1h 30min · Mensual 1h',
+    summary: 'Semanal 13h 20min · Quincenal 1h 30min · Mensual 1h',
     tasks: {
       weekly: {
-        total: 'Total semanal (según frecuencia real): 12h 30min',
+        total: 'Total semanal (según frecuencia real): 13h 20min',
         items: [
           { name: 'Tareas de cocina de mañana (entre semana)', time: '60 min × 5 = 5h/sem', desc: 'Vaciar el lavavajillas, tirar las basuras, tirar la comida que esté mala en las neveras y llevar las tazas a la cafetería.', when: 'Lunes a viernes antes de las 10:00' },
+          { name: 'Etiquetar lo abierto en las neveras', time: '5 min × 5 = 25 min/sem', desc: 'Poner la fecha de apertura en la leche, los yogures, las salsas y cualquier cosa abierta en las neveras que no tenga etiqueta. Así todo el mundo sabe cuándo se abrió y se tira menos comida.', when: 'Lunes a viernes antes de las 10:00' },
+          { name: 'Subir cucharillas a la cafetería', time: '5 min × 5 = 25 min/sem', desc: 'Comprobar que haya cucharillas limpias en la cafetería y, si faltan, subirlas desde la cocina.', when: 'Lunes a viernes antes de las 10:00' },
           { name: 'Revisar comida podrida en nevera', time: '30 min', desc: 'Tirar comida abierta mucho tiempo o que huela mal (free food + nevera coliver/as). 1 vez a la semana' },
           { name: 'Offboarding de coliver/a', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida nevera/despensa, limpiar balda, echar servilleta a lavar. Dos veces por semana (de media)', href: '/offboarding' },
           { name: 'Gestión de jardinería', time: '180 min', desc: 'Una vez a la semana' },
