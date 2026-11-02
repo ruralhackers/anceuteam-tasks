@@ -33,11 +33,13 @@ export const people: Person[] = [
     summary: 'Comunidade, onboardings e operativa entre semana · Gardas de fin de semana',
     tasks: {
       weekly: {
-        total: 'Total semanal (suma por ocorrencia): 10h 30min',
+        total: 'Total semanal (suma por ocorrencia): 10h 50min',
         items: [
           { name: 'Baleirar o lavalouza pola mañá (entre semana)', time: '15 min', desc: 'Baleirar o lavalouza e limpar a cociña (fregadeiros e lixo).', when: 'Luns a venres ás 9:00' },
           { name: 'Levar o lixo (entre semana)', time: '10 min', when: 'Luns a venres ao longo do día' },
           { name: 'Tarefas de cociña de mañá (fin de semana)', time: '60 min', desc: 'Baleirar o lavalouza, tirar o lixo, tirar a comida que estea mala nas neveiras e levar as tazas á cafetería.', when: 'Sábado e domingo antes das 10:00' },
+          { name: 'Etiquetar o aberto nas neveiras', time: '5 min × 2 = 10 min/sem', desc: 'Poñer a data de apertura no leite, nos iogures, nas salsas e en calquera cousa aberta nas neveiras que non teña etiqueta. Así todo o mundo sabe cando se abriu e tírase menos comida.', when: 'Sábado e domingo antes das 10:00' },
+          { name: 'Subir culleriñas á cafetería', time: '5 min × 2 = 10 min/sem', desc: 'Comprobar que haxa culleriñas limpas na cafetería e, se faltan, subilas dende a cociña.', when: 'Sábado e domingo antes das 10:00' },
           { name: 'Poñer lavalouza despois de comer (fin de semana)', time: '10 min', when: 'Sábado e domingo ás 16:00' },
           { name: 'Conteo de subministros e lista de compra coliving', time: '60 min', desc: 'Ir a suministros.anceu.com e encher todo o formulario para preparar a compra', when: 'Domingo pola tarde', href: 'https://suministros.anceu.com' },
           { name: 'Enviar foto da pizarra de bebidas', time: '5 min', desc: 'Facer unha foto lexible, borrar a pizarra e enviala desde a app de subministros.', when: 'Domingo pola tarde', href: 'https://suministros.anceu.com' },
@@ -106,12 +108,14 @@ export const people: Person[] = [
     name: 'Se',
     initial: 'S',
     color: 'se',
-    summary: 'Semanal 12h 30min · Quincenal 1h 30min · Mensual 1h',
+    summary: 'Semanal 13h 20min · Quincenal 1h 30min · Mensual 1h',
     tasks: {
       weekly: {
-        total: 'Total semanal (segundo frecuencia real): 12h 30min',
+        total: 'Total semanal (segundo frecuencia real): 13h 20min',
         items: [
           { name: 'Tarefas de cociña de mañá (entre semana)', time: '60 min × 5 = 5h/sem', desc: 'Baleirar o lavalouza, tirar o lixo, tirar a comida que estea mala nas neveiras e levar as tazas á cafetería.', when: 'Luns a venres antes das 10:00' },
+          { name: 'Etiquetar o aberto nas neveiras', time: '5 min × 5 = 25 min/sem', desc: 'Poñer a data de apertura no leite, nos iogures, nas salsas e en calquera cousa aberta nas neveiras que non teña etiqueta. Así todo o mundo sabe cando se abriu e tírase menos comida.', when: 'Luns a venres antes das 10:00' },
+          { name: 'Subir culleriñas á cafetería', time: '5 min × 5 = 25 min/sem', desc: 'Comprobar que haxa culleriñas limpas na cafetería e, se faltan, subilas dende a cociña.', when: 'Luns a venres antes das 10:00' },
           { name: 'Revisar comida podre na neveira', time: '30 min', desc: 'Tirar comida aberta moito tempo ou que cheira mal (free food + neveira coliver/as). 1 vez á semana' },
           { name: 'Offboarding de coliver/a', time: '20 min × 2 = 40 min/sem', desc: 'Quitar comida neveira/despensa, limpar baldas, meter servilleta a lavar. Dúas veces por semana (de media)', href: '/gl/offboarding' },
           { name: 'Xestión de xardinería', time: '180 min', desc: 'Unha vez á semana' },

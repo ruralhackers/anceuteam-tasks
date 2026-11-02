@@ -104,21 +104,21 @@ test('assigns Petra the weekday morning dishwasher and bins duties in every loca
       dishwasherWhen: 'Lunes a viernes a las 9:00',
       bins: 'Llevar las basuras (entre semana)',
       binsWhen: 'Lunes a viernes a lo largo del día',
-      total: 'Total semanal (suma por ocurrencia): 10h 30min',
+      total: 'Total semanal (suma por ocurrencia): 10h 50min',
     },
     en: {
       dishwasher: 'Empty the dishwasher in the morning (weekdays)',
       dishwasherWhen: 'Monday to Friday at 9:00',
       bins: 'Take out the bins (weekdays)',
       binsWhen: 'Monday to Friday throughout the day',
-      total: 'Weekly total (sum per occurrence): 10h 30min',
+      total: 'Weekly total (sum per occurrence): 10h 50min',
     },
     gl: {
       dishwasher: 'Baleirar o lavalouza pola mañá (entre semana)',
       dishwasherWhen: 'Luns a venres ás 9:00',
       bins: 'Levar o lixo (entre semana)',
       binsWhen: 'Luns a venres ao longo do día',
-      total: 'Total semanal (suma por ocorrencia): 10h 30min',
+      total: 'Total semanal (suma por ocorrencia): 10h 50min',
     },
   };
 
@@ -296,5 +296,45 @@ test('community building rotation names only Petra and Karen', () => {
   assert.match(localeSources.gl, /Petra e Karen rotan a facilitación/);
   for (const source of Object.values(localeSources)) {
     assert.doesNotMatch(source, /Uxía, Petra/);
+  }
+});
+
+test('adds fridge labelling and teaspoon tasks right after the morning kitchen tasks in every locale', () => {
+  const expected = {
+    es: {
+      people: peopleEs,
+      tasks: ['Etiquetar lo abierto en las neveras', 'Subir cucharillas a la cafetería'],
+      se: { kitchen: 'Tareas de cocina de mañana (entre semana)', time: '5 min × 5 = 25 min/sem', when: 'Lunes a viernes antes de las 10:00', total: 'Total semanal (según frecuencia real): 13h 20min' },
+      petra: { kitchen: 'Tareas de cocina de mañana (fin de semana)', time: '5 min × 2 = 10 min/sem', when: 'Sábado y domingo antes de las 10:00' },
+    },
+    en: {
+      people: peopleEn,
+      tasks: ['Label opened food in the fridges', 'Bring teaspoons up to the cafeteria'],
+      se: { kitchen: 'Morning kitchen tasks (weekdays)', time: '5 min × 5 = 25 min/week', when: 'Monday to Friday before 10:00', total: 'Weekly total (by actual frequency): 13h 20min' },
+      petra: { kitchen: 'Morning kitchen tasks (weekend)', time: '5 min × 2 = 10 min/week', when: 'Saturday and Sunday before 10:00' },
+    },
+    gl: {
+      people: peopleGl,
+      tasks: ['Etiquetar o aberto nas neveiras', 'Subir culleriñas á cafetería'],
+      se: { kitchen: 'Tarefas de cociña de mañá (entre semana)', time: '5 min × 5 = 25 min/sem', when: 'Luns a venres antes das 10:00', total: 'Total semanal (segundo frecuencia real): 13h 20min' },
+      petra: { kitchen: 'Tarefas de cociña de mañá (fin de semana)', time: '5 min × 2 = 10 min/sem', when: 'Sábado e domingo antes das 10:00' },
+    },
+  };
+
+  for (const [locale, { people, tasks, se, petra }] of Object.entries(expected)) {
+    for (const [id, cfg] of [['se', se], ['petra', petra]]) {
+      const items = people.find(person => person.id === id)?.tasks.weekly.items ?? [];
+      const kitchenIndex = items.findIndex(item => item.name === cfg.kitchen);
+      assert.notEqual(kitchenIndex, -1, `${locale}/${id} is missing ${cfg.kitchen}`);
+      tasks.forEach((name, offset) => {
+        const task = items[kitchenIndex + 1 + offset];
+        assert.equal(task?.name, name, `${locale}/${id}: ${name} must follow the morning kitchen task`);
+        assert.equal(task?.time, cfg.time);
+        assert.equal(task?.when, cfg.when);
+        assert.ok(task?.desc, `${locale}/${id}: ${name} needs a description`);
+      });
+    }
+    const seWeekly = people.find(person => person.id === 'se')?.tasks.weekly;
+    assert.equal(seWeekly?.total, se.total);
   }
 });

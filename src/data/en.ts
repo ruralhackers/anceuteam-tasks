@@ -33,11 +33,13 @@ export const people: Person[] = [
     summary: 'Community, onboardings and weekday operations · Weekend duty',
     tasks: {
       weekly: {
-        total: 'Weekly total (sum per occurrence): 10h 30min',
+        total: 'Weekly total (sum per occurrence): 10h 50min',
         items: [
           { name: 'Empty the dishwasher in the morning (weekdays)', time: '15 min', desc: 'Empty the dishwasher and clean the kitchen (sinks and trash).', when: 'Monday to Friday at 9:00' },
           { name: 'Take out the bins (weekdays)', time: '10 min', when: 'Monday to Friday throughout the day' },
           { name: 'Morning kitchen tasks (weekend)', time: '60 min', desc: 'Empty the dishwasher, take out the bins, throw away spoiled food from the fridges and take cups back to the cafeteria.', when: 'Saturday and Sunday before 10:00' },
+          { name: 'Label opened food in the fridges', time: '5 min × 2 = 10 min/week', desc: 'Write the opening date on milk, yogurts, sauces and anything else open in the fridges that doesn’t have a label yet. That way everyone knows when it was opened and less food goes to waste.', when: 'Saturday and Sunday before 10:00' },
+          { name: 'Bring teaspoons up to the cafeteria', time: '5 min × 2 = 10 min/week', desc: 'Check there are clean teaspoons in the cafeteria and, if they’re running low, bring some up from the kitchen.', when: 'Saturday and Sunday before 10:00' },
           { name: 'Run dishwasher after lunch (weekend)', time: '10 min', when: 'Saturday and Sunday at 16:00' },
           { name: 'Supplies count and coliving shopping list', time: '60 min', desc: 'Go to suministros.anceu.com and fill in the whole form to prepare the shopping list', when: 'Sunday afternoon', href: 'https://suministros.anceu.com' },
           { name: 'Send beverage whiteboard photo', time: '5 min', desc: 'Take a readable photo, erase the whiteboard and send it from the supplies app.', when: 'Sunday afternoon', href: 'https://suministros.anceu.com' },
@@ -106,12 +108,14 @@ export const people: Person[] = [
     name: 'Se',
     initial: 'S',
     color: 'se',
-    summary: 'Weekly 12h 30min · Biweekly 1h 30min · Monthly 1h',
+    summary: 'Weekly 13h 20min · Biweekly 1h 30min · Monthly 1h',
     tasks: {
       weekly: {
-        total: 'Weekly total (by actual frequency): 12h 30min',
+        total: 'Weekly total (by actual frequency): 13h 20min',
         items: [
           { name: 'Morning kitchen tasks (weekdays)', time: '60 min × 5 = 5h/week', desc: 'Empty the dishwasher, take out the bins, throw away spoiled food from the fridges and take cups back to the cafeteria.', when: 'Monday to Friday before 10:00' },
+          { name: 'Label opened food in the fridges', time: '5 min × 5 = 25 min/week', desc: 'Write the opening date on milk, yogurts, sauces and anything else open in the fridges that doesn’t have a label yet. That way everyone knows when it was opened and less food goes to waste.', when: 'Monday to Friday before 10:00' },
+          { name: 'Bring teaspoons up to the cafeteria', time: '5 min × 5 = 25 min/week', desc: 'Check there are clean teaspoons in the cafeteria and, if they’re running low, bring some up from the kitchen.', when: 'Monday to Friday before 10:00' },
           { name: 'Check fridge for spoiled food', time: '30 min', desc: 'Throw out food that has been open too long or smells bad (free food + coliver fridge). Once a week' },
           { name: 'Coliver offboarding', time: '20 min × 2 = 40 min/week', desc: 'Remove food from fridge/pantry, clean shelf, put napkin in laundry. Twice a week (on average)', href: '/en/offboarding' },
           { name: 'Gardening management', time: '180 min', desc: 'Once a week' },
