@@ -12,7 +12,7 @@ export interface TaskGroup {
 }
 
 export interface Person {
-  id: 'petra' | 'karen' | 'se' | 'rosabel';
+  id: 'voluntaria' | 'se' | 'rosabel';
   name: string;
   initial: string;
   color: string;  // matches a person color class in Layout.astro
@@ -67,7 +67,7 @@ export interface ChecklistItem {
 }
 
 export interface ChecklistGroup {
-  person?: 'petra' | 'karen' | 'se' | 'rosabel';
+  person?: 'voluntaria' | 'se' | 'rosabel';
   label: string;
   items: ChecklistItem[];
 }
